@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mis gastos | FinanSmart
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Mis gastos</h1>
+
+    <a class="button" href="{% url 'expenses:expense-create' %}">
+        Registrar nuevo gasto
+    </a>
+</div>
+
+<div class="card">
+    {% if expenses %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Categoría</th>
+                    <th>Descripción</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for expense in expenses %}
+                    <tr>
+                        <td>{{ expense.date }}</td>
+                        <td>{{ expense.category.name }}</td>
+                        <td>
+                            {{ expense.description|default:"Sin descripción" }}
+                        </td>
+                        <td>
+                            ${{ expense.amount|floatformat:2 }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Todavía no has registrado gastos.</p>
+    {% endif %}
+</div>
+{% endblock %}

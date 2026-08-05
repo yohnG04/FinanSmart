@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+        FinanSmart
+        {% endblock %}
+    </title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #f4f6f8;
+            color: #1f2937;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 10%;
+            background: white;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        nav a {
+            margin-right: 16px;
+            color: #1f2937;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        main {
+            width: min(900px, 90%);
+            margin: 32px auto;
+        }
+
+        .card {
+            padding: 24px;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .message {
+            padding: 14px;
+            margin-bottom: 16px;
+            background: #e8f5e9;
+            border-radius: 8px;
+        }
+
+        .errorlist {
+            color: #b91c1c;
+        }
+
+        input,
+        select,
+        textarea {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+        }
+
+        button,
+        .button {
+            display: inline-block;
+            padding: 10px 16px;
+            color: white;
+            background: #2563eb;
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logout-form {
+            display: inline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #dddddd;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <a href="{% url 'expenses:expense-list' %}">
+                FinanSmart
+            </a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'expenses:expense-create' %}">
+                    Registrar gasto
+                </a>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if user.is_authenticated %}
+                <span>{{ user.username }}</span>
+
+                <form
+                    class="logout-form"
+                    method="post"
+                    action="{% url 'logout' %}"
+                >
+                    {% csrf_token %}
+                    <button type="submit">
+                        Cerrar sesión
+                    </button>
+                </form>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main>
+        {% for message in messages %}
+            <div class="message">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
