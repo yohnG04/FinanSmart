@@ -25,7 +25,9 @@ from expenses.domain.exceptions import (
 )
 from expenses.container import (
     build_category_query_service,
+    build_expense_query_service,
     build_expense_registration_service,
+    build_income_query_service,
     build_income_registration_service,
     build_savings_goal_service,
 )
@@ -37,6 +39,19 @@ from expenses.services import (
 
 class ExpenseAPIView(APIView):
     permission_classes = [IsAuthenticated]
+    query_service_provider = staticmethod(
+        build_expense_query_service
+    )
+
+    def get(self, request):
+        expenses = self.query_service_provider().list_for_user(
+            user=request.user
+        )
+
+        return Response(
+            ExpenseResponseSerializer(expenses, many=True).data,
+            status=status.HTTP_200_OK,
+        )
 
     def post(self, request):
         serializer = ExpenseCreateSerializer(data=request.data)
@@ -86,8 +101,21 @@ class IncomeAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     service_provider = staticmethod(
-      build_income_registration_service
+                build_income_registration_service
     )
+    query_service_provider = staticmethod(
+        build_income_query_service
+    )
+
+    def get(self, request):
+        incomes = self.query_service_provider().list_for_user(
+            user=request.user
+        )
+
+        return Response(
+            IncomeResponseSerializer(incomes, many=True).data,
+            status=status.HTTP_200_OK,
+        )
 
     def post(self, request):
         serializer = IncomeCreateSerializer(data=request.data)
@@ -122,6 +150,28 @@ class SavingsGoalAPIView(APIView):
     service_provider = staticmethod(
       build_savings_goal_service
     )
+
+    def get(self, request):
+        service = self.service_provider()
+        goals = service.list_for_user(user=request.user)
+
+        response_data = SavingsGoalResponseSerializer(
+            goals,
+            many=True,
+        ).data
+
+        for goal_data, goal in zip(response_data, goals):
+            goal_data["progress"] = str(
+                round(service.calculate_progress(goal), 2)
+            )
+            goal_data["remaining"] = str(
+                service.calculate_remaining_amount(goal)
+            )
+
+        return Response(
+            response_data,
+            status=status.HTTP_200_OK,
+        )
 
     def post(self, request):
         serializer = SavingsGoalCreateSerializer(
@@ -198,6 +248,32 @@ class SavingsContributionAPIView(APIView):
     service_provider = staticmethod(
       build_savings_goal_service
     )
+
+    def get(self, request, goal_id):
+        service = self.service_provider()
+
+        try:
+            goal = service.get_for_user(
+                user=request.user,
+                goal_id=goal_id,
+            )
+        except SavingsGoalNotFoundError as error:
+            return Response(
+                {"detail": str(error)},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        contributions = service.list_contributions_for_goal(
+            goal=goal
+        )
+
+        return Response(
+            SavingsContributionResponseSerializer(
+                contributions,
+                many=True,
+            ).data,
+            status=status.HTTP_200_OK,
+        )
 
     def post(self, request, goal_id):
         serializer = SavingsContributionCreateSerializer(
