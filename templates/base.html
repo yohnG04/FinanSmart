@@ -111,10 +111,19 @@
             </a>
 
             {% if user.is_authenticated %}
-                <a href="{% url 'expenses:expense-create' %}">
-                    Registrar gasto
+                <a href="{% url 'expenses:expense-list' %}">
+                    Gastos
+                </a>
+
+                <a href="{% url 'expenses:income-list' %}">
+                    Ingresos
+                </a>
+
+                <a href="{% url 'expenses:savings-goal-list' %}">
+                    Metas
                 </a>
             {% endif %}
+            
         </div>
 
         <div>

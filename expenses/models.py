@@ -117,3 +117,124 @@ class Expense(models.Model):
 
     def __str__(self) -> str:
         return f"{self.category}: ${self.amount}"
+
+class Income(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="incomes",
+        verbose_name="usuario",
+    )
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.PROTECT,
+        related_name="incomes",
+        verbose_name="categoría",
+    )
+    amount = models.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+        validators=[MinValueValidator(Decimal("0.01"))],
+        verbose_name="monto",
+    )
+    date = models.DateField(
+        verbose_name="fecha",
+    )
+    description = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name="descripción",
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="fecha de creación",
+    )
+
+    class Meta:
+        ordering = ["-date", "-created_at"]
+        verbose_name = "ingreso"
+        verbose_name_plural = "ingresos"
+
+    def __str__(self) -> str:
+        return f"{self.category}: ${self.amount}"
+
+
+class SavingsGoal(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="savings_goals",
+        verbose_name="usuario",
+    )
+    name = models.CharField(
+        max_length=150,
+        verbose_name="nombre",
+    )
+    target_amount = models.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+        validators=[MinValueValidator(Decimal("0.01"))],
+        verbose_name="monto objetivo",
+    )
+    current_amount = models.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+        default=Decimal("0.00"),
+        validators=[MinValueValidator(Decimal("0.00"))],
+        verbose_name="monto actual",
+    )
+    target_date = models.DateField(
+        null=True,
+        blank=True,
+        verbose_name="fecha objetivo",
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="fecha de creación",
+    )
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "meta de ahorro"
+        verbose_name_plural = "metas de ahorro"
+
+    def clean(self) -> None:
+        super().clean()
+
+        if self.current_amount > self.target_amount:
+            raise ValidationError({
+                "current_amount":
+                    "El monto actual no puede superar el monto objetivo."
+            })
+
+    def __str__(self) -> str:
+        return self.name
+
+class SavingsContribution(models.Model):
+    goal = models.ForeignKey(
+        SavingsGoal,
+        on_delete=models.CASCADE,
+        related_name="contributions",
+        verbose_name="meta de ahorro",
+    )
+    amount = models.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+        validators=[MinValueValidator(Decimal("0.01"))],
+        verbose_name="monto",
+    )
+    date = models.DateField(
+        verbose_name="fecha",
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="fecha de creación",
+    )
+
+    class Meta:
+        ordering = ["-date", "-created_at"]
+        verbose_name = "abono de ahorro"
+        verbose_name_plural = "abonos de ahorro"
+
+    def __str__(self) -> str:
+        return f"{self.goal.name}: ${self.amount}"

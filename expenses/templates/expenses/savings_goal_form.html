@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+Crear meta de ahorro | FinanSmart
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Crear meta de ahorro</h1>
+
+    <p>
+        Define cuánto quieres ahorrar y cuánto llevas actualmente.
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <p>
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {{ form.name.errors }}
+        </p>
+
+        <p>
+            {{ form.target_amount.label_tag }}
+            {{ form.target_amount }}
+            {{ form.target_amount.errors }}
+        </p>
+
+        <p>
+            {{ form.current_amount.label_tag }}
+            {{ form.current_amount }}
+            {{ form.current_amount.errors }}
+        </p>
+
+        <p>
+            {{ form.target_date.label_tag }}
+            {{ form.target_date }}
+            {{ form.target_date.errors }}
+        </p>
+
+        <button type="submit">
+            Crear meta
+        </button>
+    </form>
+</div>
+{% endblock %}

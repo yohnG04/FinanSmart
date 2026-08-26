@@ -2,20 +2,23 @@
 {% load humanize %}
 
 {% block title %}
-Mis gastos | FinanSmart
+Mis ingresos | FinanSmart
 {% endblock %}
 
 {% block content %}
 <div class="card">
-    <h1>Mis gastos</h1>
+    <h1>Mis ingresos</h1>
 
-    <a class="button" href="{% url 'expenses:expense-create' %}">
-        Registrar nuevo gasto
+    <a
+        class="button"
+        href="{% url 'expenses:income-create' %}"
+    >
+        Registrar nuevo ingreso
     </a>
 </div>
 
 <div class="card">
-    {% if expenses %}
+    {% if incomes %}
         <table>
             <thead>
                 <tr>
@@ -27,22 +30,22 @@ Mis gastos | FinanSmart
             </thead>
 
             <tbody>
-                {% for expense in expenses %}
+                {% for income in incomes %}
                     <tr>
-                        <td>{{ expense.date }}</td>
-                        <td>{{ expense.category.name }}</td>
+                        <td>{{ income.date }}</td>
+                        <td>{{ income.category.name }}</td>
                         <td>
-                            {{ expense.description|default:"Sin descripción" }}
+                            {{ income.description|default:"Sin descripción" }}
                         </td>
                         <td>
-                            ${{ expense.amount|floatformat:2|intcomma }}
+                            ${{ income.amount|floatformat:2|intcomma }}
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <p>Todavía no has registrado gastos.</p>
+        <p>Todavía no has registrado ingresos.</p>
     {% endif %}
 </div>
 {% endblock %}

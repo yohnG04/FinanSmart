@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %}
+Mis metas | FinanSmart
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Mis metas de ahorro</h1>
+
+    <a
+        class="button"
+        href="{% url 'expenses:savings-goal-create' %}"
+    >
+        Crear nueva meta
+    </a>
+</div>
+
+{% if goals_with_progress %}
+    {% for item in goals_with_progress %}
+        <div class="card">
+            <h2>{{ item.goal.name }}</h2>
+
+            <p>
+                <strong>Monto objetivo:</strong>
+                ${{ item.goal.target_amount|floatformat:2|intcomma }}
+            </p>
+
+            <p>
+                <strong>Monto actual:</strong>
+                ${{ item.goal.current_amount|floatformat:2|intcomma }}
+            </p>
+
+            <p>
+                <strong>Progreso:</strong>
+                {{ item.progress }}%
+            </p>
+            <p>
+              <strong>Falta por ahorrar:</strong>
+              ${{ item.remaining|floatformat:2|intcomma }}
+            </p>
+            <a
+              class="button"
+              href="{% url 'expenses:savings-contribution-create' item.goal.id %}"
+            >
+                Abonar
+            </a>
+
+            {% if item.goal.target_date %}
+                <p>
+                    <strong>Fecha objetivo:</strong>
+                    {{ item.goal.target_date }}
+                </p>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p>Todavía no has creado metas de ahorro.</p>
+    </div>
+{% endif %}
+{% endblock %}

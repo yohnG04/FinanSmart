@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load humanize %}
+
+{% block title %}
+Abonar a meta | FinanSmart
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Abonar a {{ goal.name }}</h1>
+
+    <p>
+        <strong>Objetivo:</strong>
+        ${{ goal.target_amount|intcomma }}
+    </p>
+
+    <p>
+        <strong>Ahorrado:</strong>
+        ${{ goal.current_amount|intcomma }}
+    </p>
+    <p>
+        <strong>Falta por ahorrar:</strong>
+        ${{ remaining|floatformat:2|intcomma }}
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <p>
+            {{ form.amount.label_tag }}
+            {{ form.amount }}
+            {{ form.amount.errors }}
+        </p>
+
+        <p>
+            {{ form.date.label_tag }}
+            {{ form.date }}
+            {{ form.date.errors }}
+        </p>
+
+        <button type="submit">
+            Registrar abono
+        </button>
+    </form>
+</div>
+{% endblock %}
