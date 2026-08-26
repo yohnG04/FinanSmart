@@ -4,7 +4,9 @@ from expenses.infra.recommendation_factory import (
 )
 from expenses.services import (
     CategoryQueryService,
+    ExpenseQueryService,
     ExpenseRegistrationService,
+    IncomeQueryService,
     IncomeRegistrationService,
     SavingsGoalService,
 )
@@ -18,6 +20,14 @@ def build_expense_registration_service() -> ExpenseRegistrationService:
 
 def build_income_registration_service() -> IncomeRegistrationService:
     return IncomeRegistrationService()
+
+
+def build_expense_query_service() -> ExpenseQueryService:
+    return ExpenseQueryService()
+
+
+def build_income_query_service() -> IncomeQueryService:
+    return IncomeQueryService()
 
 
 def build_savings_goal_service() -> SavingsGoalService:

@@ -139,6 +139,15 @@ class ExpenseRegistrationService:
         return result["total"] or Decimal("0.00")
 
 
+class ExpenseQueryService:
+    def list_for_user(self, *, user):
+        return (
+            Expense.objects.filter(user=user)
+            .select_related("category")
+            .order_by("-date", "-created_at")
+        )
+
+
 class IncomeRegistrationService:
     def register(
         self,
@@ -179,6 +188,15 @@ class IncomeRegistrationService:
         income.save()
 
         return income
+
+
+class IncomeQueryService:
+    def list_for_user(self, *, user):
+        return (
+            Income.objects.filter(user=user)
+            .select_related("category")
+            .order_by("-date", "-created_at")
+        )
 
 
 class SavingsGoalService:
@@ -223,6 +241,11 @@ class SavingsGoalService:
         goal: SavingsGoal,
     ):
         return goal.target_amount - goal.current_amount
+
+    def list_for_user(self, *, user):
+        return SavingsGoal.objects.filter(user=user).order_by(
+            "-created_at"
+        )
 
     def get_for_user(
         self,
@@ -288,6 +311,15 @@ class SavingsGoalService:
         goal.save(update_fields=["current_amount"])
 
         return contribution
+
+    def list_contributions_for_goal(
+        self,
+        *,
+        goal: SavingsGoal,
+    ):
+        return goal.contributions.all().order_by(
+            "-date", "-created_at"
+        )
 
 class CategoryQueryService:
     def get_active(self, category_id: int) -> Category:
