@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.git/
+.gitignore
+db.sqlite3
+FinanSmart_Entrega2_recommendation_service.zip*
