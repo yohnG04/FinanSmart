@@ -25,12 +25,12 @@
 
             <p>
                 <strong>{% translate "Monto objetivo:" %}</strong>
-                ${{ item.goal.target_amount|floatformat:2|intcomma }}
+                ${{ item.goal.target_amount|floatformat:"2g" }}
             </p>
 
             <p>
                 <strong>{% translate "Monto actual:" %}</strong>
-                ${{ item.goal.current_amount|floatformat:2|intcomma }}
+                ${{ item.goal.current_amount|floatformat:"2g" }}
             </p>
 
             <p>
@@ -39,7 +39,7 @@
             </p>
             <p>
               <strong>{% translate "Falta por ahorrar:" %}</strong>
-              ${{ item.remaining|floatformat:2|intcomma }}
+              ${{ item.remaining|floatformat:"2g" }}
             </p>
             <a
               class="button"

@@ -13,16 +13,16 @@
 
     <p>
         <strong>{% translate "Objetivo:" %}</strong>
-        ${{ goal.target_amount|intcomma }}
+        ${{ goal.target_amount|floatformat:"2g" }}
     </p>
 
     <p>
         <strong>{% translate "Ahorrado:" %}</strong>
-        ${{ goal.current_amount|intcomma }}
+        ${{ goal.current_amount|floatformat:"2g" }}
     </p>
     <p>
         <strong>{% translate "Falta por ahorrar:" %}</strong>
-        ${{ remaining|floatformat:2|intcomma }}
+        ${{ remaining|floatformat:"2g" }}
     </p>
 
     <form method="post">

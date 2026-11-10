@@ -36,7 +36,7 @@
                             {{ expense.description }}
                         </td>
                         <td>
-                            ${{ expense.amount|floatformat:2|intcomma }}
+                            ${{ expense.amount|floatformat:"2g" }}
                         </td>
                     </tr>
                 {% endfor %}
