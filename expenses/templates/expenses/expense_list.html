@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% load humanize %}
 
+{% load i18n %}
 {% block title %}
-Mis gastos | FinanSmart
+{% translate "Mis gastos | FinanSmart" %}
 {% endblock %}
 
 {% block content %}
 <div class="card">
-    <h1>Mis gastos</h1>
+    <h1>{% translate "Mis gastos" %}</h1>
 
     <a class="button" href="{% url 'expenses:expense-create' %}">
-        Registrar nuevo gasto
+        {% translate "Registrar nuevo gasto" %}
     </a>
 </div>
 
@@ -19,10 +20,10 @@ Mis gastos | FinanSmart
         <table>
             <thead>
                 <tr>
-                    <th>Fecha</th>
-                    <th>Categoría</th>
-                    <th>Descripción</th>
-                    <th>Monto</th>
+                    <th>{% translate "Fecha" %}</th>
+                    <th>{% translate "Categoría" %}</th>
+                    <th>{% translate "Descripción" %}</th>
+                    <th>{% translate "Monto" %}</th>
                 </tr>
             </thead>
 
@@ -32,7 +33,7 @@ Mis gastos | FinanSmart
                         <td>{{ expense.date }}</td>
                         <td>{{ expense.category.name }}</td>
                         <td>
-                            {{ expense.description|default:"Sin descripción" }}
+                            {{ expense.description }}
                         </td>
                         <td>
                             ${{ expense.amount|floatformat:2|intcomma }}
@@ -42,7 +43,7 @@ Mis gastos | FinanSmart
             </tbody>
         </table>
     {% else %}
-        <p>Todavía no has registrado gastos.</p>
+        <p>{% translate "Todavía no has registrado gastos." %}</p>
     {% endif %}
 </div>
 {% endblock %}

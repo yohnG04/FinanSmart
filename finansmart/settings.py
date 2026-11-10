@@ -51,11 +51,14 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
     "expenses",
     "rest_framework",
+    "rest_framework.authtoken",
+    "finance",
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -128,7 +131,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
+LANGUAGES = [('es', 'Español'), ('en', 'English')]
+LOCALE_PATHS = [BASE_DIR / 'locale']
+ALLY_API_URL = os.getenv('ALLY_API_URL', '')
+ALLY_API_TOKEN = os.getenv('ALLY_API_TOKEN', '')
+REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': [
+    'rest_framework.authentication.SessionAuthentication',
+    'rest_framework.authentication.TokenAuthentication',
+]}
 
 TIME_ZONE = "America/Bogota"
 
@@ -148,7 +159,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "expenses:expense-list"
+LOGIN_REDIRECT_URL = "finance:dashboard"
 LOGOUT_REDIRECT_URL = "login"
 
 RECOMMENDATION_ENGINE = os.getenv(

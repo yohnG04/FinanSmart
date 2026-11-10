@@ -1,3 +1,4 @@
+from django.utils.translation import gettext as _
 from dataclasses import dataclass
 from decimal import Decimal
 from typing import Any
@@ -116,9 +117,10 @@ class ExpenseRegistrationService:
 
         if budget is None:
             raise BudgetNotFoundError(
-                "No tienes un presupuesto configurado para "
-                f"{expense.category.name} en "
-                f"{expense.date.month}/{expense.date.year}."
+                _("No tienes un presupuesto configurado para %(category)s en %(period)s.") % {
+                    'category': expense.category.name,
+                    'period': f'{expense.date.month}/{expense.date.year}',
+                }
             )
 
         return budget
@@ -162,12 +164,12 @@ class IncomeRegistrationService:
 
         if amount <= 0:
             raise IncomeDomainError(
-                "El monto del ingreso debe ser mayor que cero."
+                _('El monto del ingreso debe ser mayor que cero.')
             )
 
         if income_date > timezone.localdate():
             raise IncomeDomainError(
-                "La fecha del ingreso no puede estar en el futuro."
+                _('La fecha del ingreso no puede estar en el futuro.')
             )
 
         income = Income(
@@ -182,7 +184,7 @@ class IncomeRegistrationService:
             income.full_clean()
         except ValidationError as error:
             raise IncomeDomainError(
-                f"El ingreso contiene datos inválidos: {error}"
+                _('El ingreso contiene datos inválidos: %(value0)s') % {'value0': f'{error}'}
             ) from error
 
         income.save()
@@ -218,7 +220,7 @@ class SavingsGoalService:
             goal.full_clean()
         except ValidationError as error:
             raise SavingsGoalDomainError(
-                f"La meta contiene datos inválidos: {error}"
+                _('La meta contiene datos inválidos: %(value0)s') % {'value0': f'{error}'}
             ) from error
 
         goal.save()
@@ -260,7 +262,7 @@ class SavingsGoalService:
             )
         except SavingsGoal.DoesNotExist as error:
             raise SavingsGoalNotFoundError(
-                "La meta de ahorro no existe."
+                _('La meta de ahorro no existe.')
             ) from error
 
     @transaction.atomic
@@ -273,12 +275,12 @@ class SavingsGoalService:
     ) -> SavingsContribution:
         if amount <= 0:
             raise SavingsContributionDomainError(
-                "El abono debe ser mayor que cero."
+                _('El abono debe ser mayor que cero.')
             )
 
         if contribution_date > timezone.localdate():
             raise SavingsContributionDomainError(
-                "La fecha del abono no puede estar en el futuro."
+                _('La fecha del abono no puede estar en el futuro.')
             )
 
         new_total = goal.current_amount + amount
@@ -287,8 +289,7 @@ class SavingsGoalService:
             remaining = goal.target_amount - goal.current_amount
 
             raise SavingsContributionDomainError(
-                "El abono supera el monto pendiente de la meta. "
-                f"Solo faltan ${remaining:,.2f}."
+                _('El abono supera el monto pendiente de la meta. Solo faltan $%(value0)s.') % {'value0': f'{remaining:,.2f}'}
             )
 
         contribution = SavingsContribution(
@@ -301,7 +302,7 @@ class SavingsGoalService:
             contribution.full_clean()
         except ValidationError as error:
             raise SavingsContributionDomainError(
-                f"El abono contiene datos inválidos: {error}"
+                _('El abono contiene datos inválidos: %(value0)s') % {'value0': f'{error}'}
             ) from error
 
         contribution.save()
@@ -330,5 +331,5 @@ class CategoryQueryService:
             )
         except Category.DoesNotExist as error:
             raise CategoryNotFoundError(
-                "La categoría solicitada no existe."
+                _('La categoría solicitada no existe.')
             ) from error

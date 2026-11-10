@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% load i18n %}
+{% block title %}{{ title }} · FinanSmart{% endblock %}
+{% block content %}
+<header class="page-heading"><p class="eyebrow">FinanSmart</p><h1>{{ title }}</h1></header>
+<section class="card form-card">
+{% if debt %}<h2>{{ debt.name }}</h2><p>{% translate 'Saldo pendiente' %}: ${{ debt.balance|floatformat:2 }} COP</p><p class="muted">{% translate 'Los abonos reducen el capital. No se cobran intereses automáticamente.' %}</p>{% endif %}
+<form method="post">{% csrf_token %}{{ form.as_p }}<div class="actions"><button type="submit">{% translate 'Guardar' %}</button><a href="{% url 'finance:dashboard' %}" class="secondary">{% translate 'Volver al inicio' %}</a></div></form>
+</section>
+{% if contributions %}<section class="card"><h2>{% translate 'Historial de abonos' %}</h2>{% for item in contributions %}<p>{{ item.date }} <strong>${{ item.amount|floatformat:2 }} COP</strong></p>{% endfor %}</section>{% endif %}
+{% endblock %}

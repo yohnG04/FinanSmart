@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
+{% load i18n %}
 {% block title %}
-Registrar ingreso | FinanSmart
+{% translate "Registrar ingreso | FinanSmart" %}
 {% endblock %}
 
 {% block content %}
 <div class="card">
-    <h1>Registrar ingreso</h1>
+    <h1>{% translate "Registrar ingreso" %}</h1>
 
     <p>
-        Registra una nueva entrada de dinero.
+        {% translate "Registra una nueva entrada de dinero." %}
     </p>
 
     <form method="post">
@@ -42,7 +43,7 @@ Registrar ingreso | FinanSmart
         </p>
 
         <button type="submit">
-            Registrar ingreso
+            {% translate "Registrar ingreso" %}
         </button>
     </form>
 </div>

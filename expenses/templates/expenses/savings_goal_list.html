@@ -1,19 +1,20 @@
 {% extends "base.html" %}
 {% load humanize %}
 
+{% load i18n %}
 {% block title %}
-Mis metas | FinanSmart
+{% translate "Mis metas | FinanSmart" %}
 {% endblock %}
 
 {% block content %}
 <div class="card">
-    <h1>Mis metas de ahorro</h1>
+    <h1>{% translate "Mis metas de ahorro" %}</h1>
 
     <a
         class="button"
         href="{% url 'expenses:savings-goal-create' %}"
     >
-        Crear nueva meta
+        {% translate "Crear nueva meta" %}
     </a>
 </div>
 
@@ -23,33 +24,33 @@ Mis metas | FinanSmart
             <h2>{{ item.goal.name }}</h2>
 
             <p>
-                <strong>Monto objetivo:</strong>
+                <strong>{% translate "Monto objetivo:" %}</strong>
                 ${{ item.goal.target_amount|floatformat:2|intcomma }}
             </p>
 
             <p>
-                <strong>Monto actual:</strong>
+                <strong>{% translate "Monto actual:" %}</strong>
                 ${{ item.goal.current_amount|floatformat:2|intcomma }}
             </p>
 
             <p>
-                <strong>Progreso:</strong>
+                <strong>{% translate "Progreso:" %}</strong>
                 {{ item.progress }}%
             </p>
             <p>
-              <strong>Falta por ahorrar:</strong>
+              <strong>{% translate "Falta por ahorrar:" %}</strong>
               ${{ item.remaining|floatformat:2|intcomma }}
             </p>
             <a
               class="button"
               href="{% url 'expenses:savings-contribution-create' item.goal.id %}"
             >
-                Abonar
+                {% translate "Abonar" %}
             </a>
 
             {% if item.goal.target_date %}
                 <p>
-                    <strong>Fecha objetivo:</strong>
+                    <strong>{% translate "Fecha objetivo:" %}</strong>
                     {{ item.goal.target_date }}
                 </p>
             {% endif %}
@@ -57,7 +58,7 @@ Mis metas | FinanSmart
     {% endfor %}
 {% else %}
     <div class="card">
-        <p>Todavía no has creado metas de ahorro.</p>
+        <p>{% translate "Todavía no has creado metas de ahorro." %}</p>
     </div>
 {% endif %}
 {% endblock %}

@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from finance.views import SummaryAPIView
 
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('api/summary/', SummaryAPIView.as_view(), name='api-summary'),
+    path('', include('finance.urls')),
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
     path("", include("expenses.urls")),
