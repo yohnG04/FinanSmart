@@ -2,6 +2,8 @@
 
 ## Avance de la entrega 2
 
+Estado del conjunto y pendientes de despliegue: [Entrega 2 integrada](docs/ESTADO_INTEGRADO.md). Para el equipo de ropa Volt: [contrato de nuestra API](docs/API_PARA_EQUIPO_VOLT.txt).
+
 El bloque de frontend, presupuestos, deudas, idiomas e integraciones está descrito en [la guía de entrega y coordinación](docs/ENTREGA2_YOHN.md). La página principal ahora es el panel financiero y los gastos están en `/gastos/`. Ejecutar las migraciones antes de iniciar la aplicación.
 
 FinanSmart es una aplicación web de gestión financiera personal desarrollada con **Django** y **Django REST Framework**.
@@ -436,3 +438,7 @@ Para este entregable se consideran implementadas **4 de las 7 clases principales
 * `SavingsContribution`
 
 El objetivo del Entregable 1 es consolidar el núcleo de FinanSmart manteniendo entre el 50 % y el 60 % de las clases principales del dominio implementadas y respetando la arquitectura definida para el proyecto.
+
+## Entrega 2 (bloque de Samuel)
+
+Ver [instrucciones, pruebas y diagrama](docs/ENTREGA2_SSERNA12.md). Incluye planes premium con pagos de simulación, conexión Flask, reportes con Celery y Redis y Compose para EC2. La integración real con el equipo aliado y el despliegue efectivo requieren configuración adicional.

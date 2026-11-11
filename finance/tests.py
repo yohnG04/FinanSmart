@@ -17,6 +17,24 @@ from .integrations import FrankfurterAdapter, IntegrationUnavailable
 
 
 class FinanceTests(TestCase):
+    def test_ally_demo_command_creates_isolated_account_once(self):
+        from io import StringIO
+        from django.core.management import call_command
+        from django.core.management.base import CommandError
+        output = StringIO()
+        call_command('prepare_ally_demo', username='volt_demo_test', stdout=output)
+        user = get_user_model().objects.get(username='volt_demo_test')
+        self.assertFalse(user.has_usable_password())
+        self.assertFalse(user.is_staff)
+        self.assertFalse(user.is_superuser)
+        token = Token.objects.get(user=user)
+        self.client.logout()
+        response = self.client.get('/api/summary/', HTTP_AUTHORIZATION='Token '+token.key)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Decimal(response.json()['balance']), Decimal('2955000'))
+        with self.assertRaises(CommandError):
+            call_command('prepare_ally_demo', username='volt_demo_test', stdout=StringIO())
+
     @classmethod
     def setUpTestData(cls):
         cls.user = get_user_model().objects.create_user('owner')

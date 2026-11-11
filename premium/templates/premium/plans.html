@@ -1,0 +1,11 @@
+{% extends 'base.html' %}{% load i18n humanize %}
+{% block title %}{% translate 'Planes premium' %} · FinanSmart{% endblock %}
+{% block content %}
+<header class="page-heading"><p class="eyebrow">FinanSmart</p><h1>{% translate 'Planes premium' %}</h1><p class="muted">{% translate 'Demostración académica: ningún botón realiza cobros reales.' %}</p></header>
+{% if active_payment %}<section class="card" role="status"><h2>{% translate 'Tu plan está activo' %}</h2><p>{{ active_payment.plan.name }} · {% translate 'Válido hasta' %}: {{ active_payment.valid_until|date:'Y-m-d H:i' }}</p></section>{% endif %}
+<div class="grid">{% for plan in plans %}<article class="card"><h2>{{ plan.name }}</h2><p>{{ plan.description }}</p><p class="metric">${{ plan.price|floatformat:'2g' }} COP</p><p>{% blocktranslate with days=plan.duration_days %}Vigencia: {{ days }} días{% endblocktranslate %}</p>
+<form method="post" action="{% url 'premium:simulate-payment' plan.pk %}">{% csrf_token %}<input type="hidden" name="simulation" value="approved"><button type="submit">{% translate 'Simular pago aprobado' %}</button></form>
+<form method="post" action="{% url 'premium:simulate-payment' plan.pk %}">{% csrf_token %}<input type="hidden" name="simulation" value="rejected"><button class="secondary" type="submit">{% translate 'Simular pago rechazado' %}</button></form></article>
+{% empty %}<section class="card"><p>{% translate 'No hay planes disponibles.' %}</p></section>{% endfor %}</div>
+<section class="card"><h2>{% translate 'Historial de pagos de prueba' %}</h2>{% for payment in payments %}<div class="transaction"><span>{{ payment.plan.name }} · {{ payment.created_at|date:'Y-m-d H:i' }}</span><strong>{{ payment.get_status_display }} · ${{ payment.amount|floatformat:'2g' }}</strong></div>{% empty %}<p>{% translate 'Todavía no hay pagos.' %}</p>{% endfor %}</section>
+{% endblock %}

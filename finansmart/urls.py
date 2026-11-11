@@ -22,6 +22,7 @@ from finance.views import SummaryAPIView
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('api/summary/', SummaryAPIView.as_view(), name='api-summary'),
+    path('premium/', include('premium.urls')),
     path('', include('finance.urls')),
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),

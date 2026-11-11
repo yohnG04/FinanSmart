@@ -1,0 +1,116 @@
+FINANSMART -> EQUIPO VOLT
+Contrato de servicio para cumplir el punto de consumo del equipo aliado
+Actualización: 10 de noviembre de 2026
+
+QUÉ OFRECEMOS
+Un resumen financiero de una cuenta de demostración con datos ficticios.
+Pueden mostrarlo en Volt como un panel de "Resumen financiero de FinanSmart".
+No necesitan clonar nuestro proyecto: su servidor llama a nuestra API.
+
+ESTADO
+El endpoint está implementado y probado. Falta la URL pública del despliegue
+y entregar el token de una cuenta creada EN ESE MISMO SERVIDOR.
+Este archivo no contiene una URL o un token utilizables todavía.
+
+PETICIÓN
+Método: GET
+Ruta con Nginx: /api/v1/summary/
+Ruta directa de Django (desarrollo): /api/summary/
+Cuerpo: ninguno
+Headers:
+  Accept: application/json
+  Authorization: Token TOKEN_ENTREGADO_POR_PRIVADO
+
+Ejemplo de URL final (marcador, reemplazar):
+https://DOMINIO-PUBLICO-DE-FINANSMART/api/v1/summary/
+
+Importante: aquí se usa "Token", no "Bearer".
+La autenticación es diferente al chatbot público de Volt, que no exige token.
+No usar localhost o 127.0.0.1 desde otro equipo.
+
+RESPUESTA 200 OK (ejemplo)
+{
+  "month": 11,
+  "year": 2026,
+  "currency": "COP",
+  "income": "3200000.00",
+  "expenses": "245000.00",
+  "balance": "2955000.00",
+  "savings": "1250000.00",
+  "debt": "1800000.00"
+}
+
+TIPOS Y SIGNIFICADO
+- month, year: enteros; periodo actual en America/Bogota.
+- currency: texto, COP.
+- income: ingresos registrados en el mes.
+- expenses: gastos registrados en el mes.
+- balance: income - expenses; puede ser negativo.
+- savings: ahorro actual acumulado en metas.
+- debt: saldo de capital pendiente en deudas.
+- Los cinco montos son cadenas decimales, no textos con separadores de miles.
+- savings y debt son saldos actuales, no totales del mes.
+- Cada token ve exclusivamente los datos de su propia cuenta.
+
+LÍMITE DE USO
+El balance NO es el presupuesto disponible para ropa ni una autorización de
+compra. Mostrarlo como resumen. Si desean filtrar recomendaciones por presupuesto,
+el usuario puede indicar un máximo explícito. El endpoint específico de
+presupuesto de ropa que se propuso no está implementado.
+
+EJEMPLO DESDE EL BACKEND DE VOLT (Python)
+
+import json
+import os
+from urllib.request import Request, urlopen
+from urllib.error import URLError
+
+url = os.environ['FINANSMART_SUMMARY_URL']
+token = os.environ['FINANSMART_TOKEN']
+request = Request(url, headers={
+    'Accept': 'application/json',
+    'Authorization': 'Token ' + token,
+})
+try:
+    with urlopen(request, timeout=5) as response:
+        summary = json.load(response)
+except (URLError, TimeoutError, ValueError):
+    summary = None  # Mostrar un aviso y mantener disponible la tienda.
+
+Guardar el token en el entorno del servidor, no en JavaScript público ni en Git.
+Llamar desde su backend evita exponer el token y no requiere habilitar CORS.
+No registrar el token en logs o capturas de la sustentación.
+
+ERRORES
+- 403: falta autenticación o el token no es válido en la configuración actual.
+- 404: revisar ruta, prefijo /api/v1/ y configuración del despliegue.
+- Timeout/5xx: mostrar "Resumen financiero no disponible" y permitir continuar.
+
+PRUEBA Y EVIDENCIA
+1. Recibir URL real y token por privado.
+2. Hacer GET y verificar HTTP 200 y campos esperados.
+3. Mostrar los datos en una sección de Volt, con fuente FinanSmart.
+4. Probar la indisponibilidad sin bloquear el chatbot o el catálogo.
+5. Capturar la sección funcionando; ocultar tokens en cualquier evidencia.
+
+QUÉ NECESITAMOS DE VOLT A CAMBIO
+Su IP o dominio accesible desde nuestro servidor. Ya adaptamos FinanSmart al
+POST /api/chatbot/message/ y a su contrato de conversación/productos sin token.
+Configurar su origen en VOLT_BASE_URL y probar ambos sentidos de la integración.
+
+PASOS PARA YOHN / RESPONSABLE DEL DESPLIEGUE
+No tiene que ejecutarlos el equipo Volt.
+
+Después de desplegar y aplicar migraciones, ejecutar EN EL SERVIDOR:
+  python manage.py prepare_ally_demo --username volt_demo
+
+Con Docker Compose:
+  docker compose exec django_web python manage.py prepare_ally_demo --username volt_demo
+
+Este comando crea datos ficticios y muestra la cabecera con el token. No modifica
+cuentas existentes. Si la cuenta ya existe, se detiene para evitar sobrescribirla.
+La cuenta no tiene contraseña web ni permisos administrativos.
+
+Entregarles por privado la URL completa comprobada y esa cabecera.
+Un token creado en SQLite local no sirve automáticamente en PostgreSQL de AWS:
+debe generarse en la base de datos del despliegue que van a consultar.
