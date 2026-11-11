@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
+{% load i18n %}
 {% block title %}
-Crear meta de ahorro | FinanSmart
+{% translate "Crear meta de ahorro | FinanSmart" %}
 {% endblock %}
 
 {% block content %}
 <div class="card">
-    <h1>Crear meta de ahorro</h1>
+    <h1>{% translate "Crear meta de ahorro" %}</h1>
 
     <p>
-        Define cuánto quieres ahorrar y cuánto llevas actualmente.
+        {% translate "Define cuánto quieres ahorrar y cuánto llevas actualmente." %}
     </p>
 
     <form method="post">
@@ -42,7 +43,7 @@ Crear meta de ahorro | FinanSmart
         </p>
 
         <button type="submit">
-            Crear meta
+            {% translate "Crear meta" %}
         </button>
     </form>
 </div>

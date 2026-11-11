@@ -1,0 +1,549 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FinanSmart 2\n"
+"Language: en\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Abonar"
+msgstr "Contribute"
+
+msgid "Abonar a"
+msgstr "Contribute to"
+
+msgid "Abonar a deuda"
+msgstr "Pay down debt"
+
+msgid "Abonar a meta | FinanSmart"
+msgstr "Contribute to goal | FinanSmart"
+
+msgid "Abono registrado correctamente."
+msgstr "Contribution recorded successfully."
+
+msgid "Abonos e historial"
+msgstr "Payments and history"
+
+msgid "Agrega una deuda para seguir su saldo y sus abonos."
+msgstr "Add a debt to track its balance and payments."
+
+msgid "Ahorrado:"
+msgstr "Saved:"
+
+msgid "Ahorro en metas"
+msgstr "Goal savings"
+
+msgid ""
+"Atención: has utilizado el %(value0)s%% de tu presupuesto de %(value1)s. "
+"Reduce los gastos no esenciales."
+msgstr ""
+"Warning: you have used %(value0)s%% of your %(value1)s budget. Reduce non-"
+"essential spending."
+
+msgid "Año"
+msgstr "Year"
+
+msgid "Aún no tienes deudas registradas"
+msgstr "You have no debts recorded yet"
+
+msgid "Balance del mes"
+msgstr "Monthly balance"
+
+msgid "Cada decisión cuenta."
+msgstr "Every decision counts."
+
+msgid "Cambiar"
+msgstr "Change"
+
+msgid "Capital inicial"
+msgstr "Initial principal"
+
+msgid "Categoría"
+msgstr "Category"
+
+msgid "Controla tu saldo y registra tus abonos a capital."
+msgstr "Track your balance and record principal payments."
+
+msgid "Crea un presupuesto y registra tu primer movimiento."
+msgstr "Create a budget and record your first transaction."
+
+msgid "Crear meta"
+msgstr "Create goal"
+
+msgid "Crear meta de ahorro"
+msgstr "Create savings goal"
+
+msgid "Crear meta de ahorro | FinanSmart"
+msgstr "Create savings goal | FinanSmart"
+
+msgid "Crear nueva meta"
+msgstr "Create new goal"
+
+msgid "Crear presupuesto"
+msgstr "Create budget"
+
+msgid "Cuota mensual"
+msgstr "Monthly payment"
+
+msgid "Define cuánto quieres ahorrar y cuánto llevas actualmente."
+msgstr "Set your savings target and your current savings."
+
+msgid "Define un límite por categoría antes de registrar gastos."
+msgstr "Set a category limit before recording expenses."
+
+msgid "Descripción"
+msgstr "Description"
+
+msgid "Descripción opcional"
+msgstr "Optional description"
+
+msgid "Deuda pendiente"
+msgstr "Outstanding debt"
+
+msgid "Deudas"
+msgstr "Debts"
+
+msgid "Ejemplo: 1000000"
+msgstr "Example: 1000000"
+
+msgid "Ejemplo: 1200000"
+msgstr "Example: 1200000"
+
+msgid "Ejemplo: 200000"
+msgstr "Example: 200000"
+
+msgid "Ejemplo: 50000"
+msgstr "Example: 50000"
+
+msgid "Ejemplo: 5000000"
+msgstr "Example: 5000000"
+
+msgid "Ejemplo: Comprar computador"
+msgstr "Example: Buy a computer"
+
+msgid "El abono contiene datos inválidos: %(value0)s"
+msgstr "The contribution contains invalid data: %(value0)s"
+
+msgid "El abono debe ser mayor que cero."
+msgstr "The contribution must be greater than zero."
+
+msgid "El abono debe ser positivo y no superar el saldo."
+msgstr "The payment must be positive and must not exceed the balance."
+
+msgid ""
+"El abono supera el monto pendiente de la meta. Solo faltan $%(value0)s."
+msgstr ""
+"The contribution exceeds the remaining goal amount. Only $%(value0)s "
+"remains."
+
+msgid "El gasto contiene datos inválidos: %(value0)s"
+msgstr "The expense contains invalid data: %(value0)s"
+
+msgid "El ingreso contiene datos inválidos: %(value0)s"
+msgstr "The income contains invalid data: %(value0)s"
+
+msgid "El mes debe estar entre 1 y 12."
+msgstr "The month must be between 1 and 12."
+
+msgid "El monto actual no puede superar el monto objetivo."
+msgstr "The current amount cannot exceed the target amount."
+
+msgid "El monto del gasto debe ser mayor que cero."
+msgstr "The expense amount must be greater than zero."
+
+msgid "El monto del gasto no es válido."
+msgstr "The expense amount is invalid."
+
+msgid "El monto del ingreso debe ser mayor que cero."
+msgstr "The income amount must be greater than zero."
+
+msgid "El servicio debe utilizar HTTPS."
+msgstr "The service must use HTTPS."
+
+msgid "El servicio del equipo aliado aún no está conectado."
+msgstr "The allied team's service is not connected yet."
+
+msgid "El servicio devolvió datos inválidos."
+msgstr "The service returned invalid data."
+
+msgid "El servicio no está disponible. Intenta más tarde."
+msgstr "The service is unavailable. Please try again later."
+
+msgid "El servicio no tiene novedades."
+msgstr "The service has no updates."
+
+msgid "Empieza a organizar tus finanzas"
+msgstr "Start organizing your finances"
+
+msgid "Equipo aliado"
+msgstr "Allied team"
+
+msgid "Estimación sobre el saldo actual; no genera cargos."
+msgstr "Estimate based on the current balance; no charges are generated."
+
+msgid "Falta por ahorrar:"
+msgstr "Left to save:"
+
+msgid "Fecha"
+msgstr "Date"
+
+msgid "Fecha objetivo"
+msgstr "Target date"
+
+msgid "Fecha objetivo:"
+msgstr "Target date:"
+
+msgid "Gasto registrado. %(value0)s"
+msgstr "Expense recorded. %(value0)s"
+
+msgid "Gastos"
+msgstr "Expenses"
+
+msgid "Gastos del mes"
+msgstr "Monthly expenses"
+
+msgid "Guardado correctamente."
+msgstr "Saved successfully."
+
+msgid "Guardar"
+msgstr "Save"
+
+msgid "Historial de abonos"
+msgstr "Payment history"
+
+msgid "INFORMACIÓN ÚTIL"
+msgstr "USEFUL INFORMATION"
+
+msgid "Idioma"
+msgstr "Language"
+
+msgid "Ingreso registrado correctamente."
+msgstr "Income recorded successfully."
+
+msgid "Ingresos"
+msgstr "Income"
+
+msgid "Ingresos del mes"
+msgstr "Monthly income"
+
+msgid "Ingresos menos gastos registrados este mes."
+msgstr "Income minus expenses recorded this month."
+
+msgid "Iniciar sesión"
+msgstr "Sign in"
+
+msgid "Iniciar sesión | FinanSmart"
+msgstr "Sign in | FinanSmart"
+
+msgid "Interés mensual (%)"
+msgstr "Monthly interest (%)"
+
+msgid "Interés mensual estimado"
+msgstr "Estimated monthly interest"
+
+msgid "La categoría solicitada no existe."
+msgstr "The requested category does not exist."
+
+msgid "La fecha debe estar entre la creación de la deuda y hoy."
+msgstr "The date must be between the debt creation date and today."
+
+msgid "La fecha del abono no puede estar en el futuro."
+msgstr "The contribution date cannot be in the future."
+
+msgid "La fecha del gasto no puede estar en el futuro."
+msgstr "The expense date cannot be in the future."
+
+msgid "La fecha del ingreso no puede estar en el futuro."
+msgstr "The income date cannot be in the future."
+
+msgid "La meta contiene datos inválidos: %(value0)s"
+msgstr "The goal contains invalid data: %(value0)s"
+
+msgid "La meta de ahorro no existe."
+msgstr "The savings goal does not exist."
+
+msgid "Los abonos reducen el capital. No se cobran intereses automáticamente."
+msgstr "Payments reduce principal. Interest is not charged automatically."
+
+msgid "Límite mensual"
+msgstr "Monthly limit"
+
+msgid "MI ESPACIO"
+msgstr "MY SPACE"
+
+msgid "Mes"
+msgstr "Month"
+
+msgid "Meta de ahorro creada correctamente."
+msgstr "Savings goal created successfully."
+
+msgid "Metas de ahorro"
+msgstr "Savings goals"
+
+msgid "Mis deudas"
+msgstr "My debts"
+
+msgid "Mis gastos"
+msgstr "My expenses"
+
+msgid "Mis gastos | FinanSmart"
+msgstr "My expenses | FinanSmart"
+
+msgid "Mis ingresos"
+msgstr "My income"
+
+msgid "Mis ingresos | FinanSmart"
+msgstr "My income | FinanSmart"
+
+msgid "Mis metas de ahorro"
+msgstr "My savings goals"
+
+msgid "Mis metas | FinanSmart"
+msgstr "My goals | FinanSmart"
+
+msgid "Mis presupuestos"
+msgstr "My budgets"
+
+msgid "Monto"
+msgstr "Amount"
+
+msgid "Monto actual"
+msgstr "Current amount"
+
+msgid "Monto actual:"
+msgstr "Current amount:"
+
+msgid "Monto del abono"
+msgstr "Contribution amount"
+
+msgid "Monto objetivo"
+msgstr "Target amount"
+
+msgid "Monto objetivo:"
+msgstr "Target amount:"
+
+msgid "Navegación principal"
+msgstr "Main navigation"
+
+msgid "Nombre"
+msgstr "Name"
+
+msgid "Nombre de la meta"
+msgstr "Goal name"
+
+msgid "Objetivo:"
+msgstr "Target:"
+
+msgid "PASO A PASO"
+msgstr "STEP BY STEP"
+
+msgid "PLANIFICA TU MES"
+msgstr "PLAN YOUR MONTH"
+
+msgid "Pequeños pasos. Grandes metas."
+msgstr "Small steps. Big goals."
+
+msgid "Presupuestos"
+msgstr "Budgets"
+
+msgid "Progreso:"
+msgstr "Progress:"
+
+msgid "RECOMMENDATION_ENGINE debe ser: %(value0)s."
+msgstr "RECOMMENDATION_ENGINE must be: %(value0)s."
+
+msgid "Registra el gasto para validarlo contra tu presupuesto mensual."
+msgstr "Record an expense to check it against your monthly budget."
+
+msgid "Registra una nueva entrada de dinero."
+msgstr "Record new incoming money."
+
+msgid "Registrar abono"
+msgstr "Record contribution"
+
+msgid "Registrar deuda"
+msgstr "Record debt"
+
+msgid "Registrar gasto"
+msgstr "Record expense"
+
+msgid "Registrar gasto | FinanSmart"
+msgstr "Record expense | FinanSmart"
+
+msgid "Registrar ingreso"
+msgstr "Record income"
+
+msgid "Registrar ingreso | FinanSmart"
+msgstr "Record income | FinanSmart"
+
+msgid "Registrar nuevo gasto"
+msgstr "Record new expense"
+
+msgid "Registrar nuevo ingreso"
+msgstr "Record new income"
+
+msgid "Resumen"
+msgstr "Overview"
+
+msgid "Resumen financiero"
+msgstr "Financial overview"
+
+msgid "Saldo pendiente"
+msgstr "Outstanding balance"
+
+msgid "Salir"
+msgstr "Sign out"
+
+msgid "Saltar al contenido"
+msgstr "Skip to content"
+
+msgid "Selecciona una categoría"
+msgstr "Select a category"
+
+msgid "Selecciona una categoría y el límite que quieres respetar."
+msgstr "Choose a category and the limit you want to respect."
+
+msgid "Servicios"
+msgstr "Services"
+
+msgid "Servicios conectados"
+msgstr "Connected services"
+
+msgid ""
+"Superaste tu presupuesto de %(value0)s en $%(value1)s. Revisa tus últimos "
+"gastos y ajusta tus próximas compras."
+msgstr ""
+"You exceeded your %(value0)s budget by $%(value1)s. Review recent expenses "
+"and adjust your next purchases."
+
+msgid "TU DINERO, CON CLARIDAD"
+msgstr "YOUR MONEY, CLEARLY"
+
+msgid "Tasa de referencia publicada; no es una cotización de compraventa."
+msgstr "Published reference rate; not a buy or sell quote."
+
+msgid "Tasa mensual. La estimación no genera cargos automáticos."
+msgstr "Monthly rate. This estimate does not generate automatic charges."
+
+msgid "Tipo de cambio de referencia"
+msgstr "Reference exchange rate"
+
+msgid "Todavía no has creado metas de ahorro."
+msgstr "You have not created any savings goals yet."
+
+msgid "Todavía no has registrado gastos."
+msgstr "You have not recorded any expenses yet."
+
+msgid "Todavía no has registrado ingresos."
+msgstr "You have not recorded any income yet."
+
+msgid "Tu primer presupuesto empieza aquí"
+msgstr "Your first budget starts here"
+
+msgid "Tus finanzas, en un solo lugar."
+msgstr "Your finances, in one place."
+
+msgid "Usuario o contraseña incorrectos."
+msgstr "Incorrect username or password."
+
+msgid ""
+"Vas bien. Has utilizado el %(value0)s%% de tu presupuesto de %(value1)s."
+msgstr ""
+"You are doing well. You have used %(value0)s%% of your %(value1)s budget."
+
+msgid "Ver todos"
+msgstr "View all"
+
+msgid "Volver al inicio"
+msgstr "Back to overview"
+
+msgid ""
+"[MODO MOCK] Recomendación simulada: revisa tus gastos antes de realizar otra"
+" compra."
+msgstr ""
+"[MOCK MODE] Simulated recommendation: review your spending before making "
+"another purchase."
+
+msgid "año"
+msgstr "year"
+
+msgid "categoría"
+msgstr "category"
+
+msgid "categorías"
+msgstr "categories"
+
+msgid "descripción"
+msgstr "description"
+
+msgid "fecha"
+msgstr "date"
+
+msgid "fecha de creación"
+msgstr "creation date"
+
+msgid "fecha objetivo"
+msgstr "target date"
+
+msgid "gasto"
+msgstr "expense"
+
+msgid "ingreso"
+msgstr "income"
+
+msgid "límite"
+msgstr "limit"
+
+msgid "mes"
+msgstr "month"
+
+msgid "meta de ahorro"
+msgstr "savings goal"
+
+msgid "monto"
+msgstr "amount"
+
+msgid "monto actual"
+msgstr "current amount"
+
+msgid "monto objetivo"
+msgstr "target amount"
+
+msgid "nombre"
+msgstr "name"
+
+msgid "presupuesto"
+msgstr "budget"
+
+msgid "usuario"
+msgstr "user"
+
+msgid "Últimos gastos"
+msgstr "Recent expenses"
+
+msgid "No tienes un presupuesto configurado para %(category)s en %(period)s."
+msgstr "You have no budget configured for %(category)s in %(period)s."
+
+msgid "El gasto requiere los campos: %(fields)s."
+msgstr "The expense requires these fields: %(fields)s."
+
+msgid "activa"
+msgstr "active"
+
+msgid "presupuestos"
+msgstr "budgets"
+
+msgid "gastos"
+msgstr "expenses"
+
+msgid "ingresos"
+msgstr "income"
+
+msgid "metas de ahorro"
+msgstr "savings goals"
+
+msgid "abonos de ahorro"
+msgstr "savings contributions"
+
+msgid "abono de ahorro"
+msgstr "savings contribution"

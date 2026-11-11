@@ -1,3 +1,4 @@
+from django.utils.translation import gettext as _
 from decimal import Decimal
 
 
@@ -10,8 +11,7 @@ class MockRecommendationEngine:
         limit: Decimal,
     ) -> str:
         return (
-            "[MODO MOCK] Recomendación simulada: "
-            "revisa tus gastos antes de realizar otra compra."
+            _('[MODO MOCK] Recomendación simulada: revisa tus gastos antes de realizar otra compra.')
         )
 
 
@@ -27,21 +27,16 @@ class BudgetRecommendationEngine:
 
         if percentage < Decimal("70"):
             return (
-                f"Vas bien. Has utilizado el {percentage:.1f}% "
-                f"de tu presupuesto de {category_name}."
+                _('Vas bien. Has utilizado el %(value0)s%% de tu presupuesto de %(value1)s.') % {'value0': f'{percentage:.1f}', 'value1': f'{category_name}'}
             )
 
         if percentage < Decimal("100"):
             return (
-                f"Atención: has utilizado el {percentage:.1f}% "
-                f"de tu presupuesto de {category_name}. "
-                "Reduce los gastos no esenciales."
+                _('Atención: has utilizado el %(value0)s%% de tu presupuesto de %(value1)s. Reduce los gastos no esenciales.') % {'value0': f'{percentage:.1f}', 'value1': f'{category_name}'}
             )
 
         exceeded_amount = spent - limit
 
         return (
-            f"Superaste tu presupuesto de {category_name} "
-            f"en ${exceeded_amount:,.2f}. "
-            "Revisa tus últimos gastos y ajusta tus próximas compras."
+            _('Superaste tu presupuesto de %(value0)s en $%(value1)s. Revisa tus últimos gastos y ajusta tus próximas compras.') % {'value0': f'{category_name}', 'value1': f'{exceeded_amount:,.2f}'}
         )

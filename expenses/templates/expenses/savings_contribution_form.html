@@ -2,26 +2,27 @@
 
 {% load humanize %}
 
+{% load i18n %}
 {% block title %}
-Abonar a meta | FinanSmart
+{% translate "Abonar a meta | FinanSmart" %}
 {% endblock %}
 
 {% block content %}
 <div class="card">
-    <h1>Abonar a {{ goal.name }}</h1>
+    <h1>{% translate "Abonar a" %} {{ goal.name }}</h1>
 
     <p>
-        <strong>Objetivo:</strong>
-        ${{ goal.target_amount|intcomma }}
+        <strong>{% translate "Objetivo:" %}</strong>
+        ${{ goal.target_amount|floatformat:"2g" }}
     </p>
 
     <p>
-        <strong>Ahorrado:</strong>
-        ${{ goal.current_amount|intcomma }}
+        <strong>{% translate "Ahorrado:" %}</strong>
+        ${{ goal.current_amount|floatformat:"2g" }}
     </p>
     <p>
-        <strong>Falta por ahorrar:</strong>
-        ${{ remaining|floatformat:2|intcomma }}
+        <strong>{% translate "Falta por ahorrar:" %}</strong>
+        ${{ remaining|floatformat:"2g" }}
     </p>
 
     <form method="post">
@@ -42,7 +43,7 @@ Abonar a meta | FinanSmart
         </p>
 
         <button type="submit">
-            Registrar abono
+            {% translate "Registrar abono" %}
         </button>
     </form>
 </div>

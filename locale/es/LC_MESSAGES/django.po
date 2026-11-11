@@ -1,0 +1,549 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FinanSmart 2\n"
+"Language: es\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Abonar"
+msgstr "Abonar"
+
+msgid "Abonar a"
+msgstr "Abonar a"
+
+msgid "Abonar a deuda"
+msgstr "Abonar a deuda"
+
+msgid "Abonar a meta | FinanSmart"
+msgstr "Abonar a meta | FinanSmart"
+
+msgid "Abono registrado correctamente."
+msgstr "Abono registrado correctamente."
+
+msgid "Abonos e historial"
+msgstr "Abonos e historial"
+
+msgid "Agrega una deuda para seguir su saldo y sus abonos."
+msgstr "Agrega una deuda para seguir su saldo y sus abonos."
+
+msgid "Ahorrado:"
+msgstr "Ahorrado:"
+
+msgid "Ahorro en metas"
+msgstr "Ahorro en metas"
+
+msgid ""
+"Atención: has utilizado el %(value0)s%% de tu presupuesto de %(value1)s. "
+"Reduce los gastos no esenciales."
+msgstr ""
+"Atención: has utilizado el %(value0)s%% de tu presupuesto de %(value1)s. "
+"Reduce los gastos no esenciales."
+
+msgid "Año"
+msgstr "Año"
+
+msgid "Aún no tienes deudas registradas"
+msgstr "Aún no tienes deudas registradas"
+
+msgid "Balance del mes"
+msgstr "Balance del mes"
+
+msgid "Cada decisión cuenta."
+msgstr "Cada decisión cuenta."
+
+msgid "Cambiar"
+msgstr "Cambiar"
+
+msgid "Capital inicial"
+msgstr "Capital inicial"
+
+msgid "Categoría"
+msgstr "Categoría"
+
+msgid "Controla tu saldo y registra tus abonos a capital."
+msgstr "Controla tu saldo y registra tus abonos a capital."
+
+msgid "Crea un presupuesto y registra tu primer movimiento."
+msgstr "Crea un presupuesto y registra tu primer movimiento."
+
+msgid "Crear meta"
+msgstr "Crear meta"
+
+msgid "Crear meta de ahorro"
+msgstr "Crear meta de ahorro"
+
+msgid "Crear meta de ahorro | FinanSmart"
+msgstr "Crear meta de ahorro | FinanSmart"
+
+msgid "Crear nueva meta"
+msgstr "Crear nueva meta"
+
+msgid "Crear presupuesto"
+msgstr "Crear presupuesto"
+
+msgid "Cuota mensual"
+msgstr "Cuota mensual"
+
+msgid "Define cuánto quieres ahorrar y cuánto llevas actualmente."
+msgstr "Define cuánto quieres ahorrar y cuánto llevas actualmente."
+
+msgid "Define un límite por categoría antes de registrar gastos."
+msgstr "Define un límite por categoría antes de registrar gastos."
+
+msgid "Descripción"
+msgstr "Descripción"
+
+msgid "Descripción opcional"
+msgstr "Descripción opcional"
+
+msgid "Deuda pendiente"
+msgstr "Deuda pendiente"
+
+msgid "Deudas"
+msgstr "Deudas"
+
+msgid "Ejemplo: 1000000"
+msgstr "Ejemplo: 1000000"
+
+msgid "Ejemplo: 1200000"
+msgstr "Ejemplo: 1200000"
+
+msgid "Ejemplo: 200000"
+msgstr "Ejemplo: 200000"
+
+msgid "Ejemplo: 50000"
+msgstr "Ejemplo: 50000"
+
+msgid "Ejemplo: 5000000"
+msgstr "Ejemplo: 5000000"
+
+msgid "Ejemplo: Comprar computador"
+msgstr "Ejemplo: Comprar computador"
+
+msgid "El abono contiene datos inválidos: %(value0)s"
+msgstr "El abono contiene datos inválidos: %(value0)s"
+
+msgid "El abono debe ser mayor que cero."
+msgstr "El abono debe ser mayor que cero."
+
+msgid "El abono debe ser positivo y no superar el saldo."
+msgstr "El abono debe ser positivo y no superar el saldo."
+
+msgid ""
+"El abono supera el monto pendiente de la meta. Solo faltan $%(value0)s."
+msgstr ""
+"El abono supera el monto pendiente de la meta. Solo faltan $%(value0)s."
+
+msgid "El gasto contiene datos inválidos: %(value0)s"
+msgstr "El gasto contiene datos inválidos: %(value0)s"
+
+msgid "El ingreso contiene datos inválidos: %(value0)s"
+msgstr "El ingreso contiene datos inválidos: %(value0)s"
+
+msgid "El mes debe estar entre 1 y 12."
+msgstr "El mes debe estar entre 1 y 12."
+
+msgid "El monto actual no puede superar el monto objetivo."
+msgstr "El monto actual no puede superar el monto objetivo."
+
+msgid "El monto del gasto debe ser mayor que cero."
+msgstr "El monto del gasto debe ser mayor que cero."
+
+msgid "El monto del gasto no es válido."
+msgstr "El monto del gasto no es válido."
+
+msgid "El monto del ingreso debe ser mayor que cero."
+msgstr "El monto del ingreso debe ser mayor que cero."
+
+msgid "El servicio debe utilizar HTTPS."
+msgstr "El servicio debe utilizar HTTPS."
+
+msgid "El servicio del equipo aliado aún no está conectado."
+msgstr "El servicio del equipo aliado aún no está conectado."
+
+msgid "El servicio devolvió datos inválidos."
+msgstr "El servicio devolvió datos inválidos."
+
+msgid "El servicio no está disponible. Intenta más tarde."
+msgstr "El servicio no está disponible. Intenta más tarde."
+
+msgid "El servicio no tiene novedades."
+msgstr "El servicio no tiene novedades."
+
+msgid "Empieza a organizar tus finanzas"
+msgstr "Empieza a organizar tus finanzas"
+
+msgid "Equipo aliado"
+msgstr "Equipo aliado"
+
+msgid "Estimación sobre el saldo actual; no genera cargos."
+msgstr "Estimación sobre el saldo actual; no genera cargos."
+
+msgid "Falta por ahorrar:"
+msgstr "Falta por ahorrar:"
+
+msgid "Fecha"
+msgstr "Fecha"
+
+msgid "Fecha objetivo"
+msgstr "Fecha objetivo"
+
+msgid "Fecha objetivo:"
+msgstr "Fecha objetivo:"
+
+msgid "Gasto registrado. %(value0)s"
+msgstr "Gasto registrado. %(value0)s"
+
+msgid "Gastos"
+msgstr "Gastos"
+
+msgid "Gastos del mes"
+msgstr "Gastos del mes"
+
+msgid "Guardado correctamente."
+msgstr "Guardado correctamente."
+
+msgid "Guardar"
+msgstr "Guardar"
+
+msgid "Historial de abonos"
+msgstr "Historial de abonos"
+
+msgid "INFORMACIÓN ÚTIL"
+msgstr "INFORMACIÓN ÚTIL"
+
+msgid "Idioma"
+msgstr "Idioma"
+
+msgid "Ingreso registrado correctamente."
+msgstr "Ingreso registrado correctamente."
+
+msgid "Ingresos"
+msgstr "Ingresos"
+
+msgid "Ingresos del mes"
+msgstr "Ingresos del mes"
+
+msgid "Ingresos menos gastos registrados este mes."
+msgstr "Ingresos menos gastos registrados este mes."
+
+msgid "Iniciar sesión"
+msgstr "Iniciar sesión"
+
+msgid "Iniciar sesión | FinanSmart"
+msgstr "Iniciar sesión | FinanSmart"
+
+msgid "Interés mensual (%)"
+msgstr "Interés mensual (%)"
+
+msgid "Interés mensual estimado"
+msgstr "Interés mensual estimado"
+
+msgid "La categoría solicitada no existe."
+msgstr "La categoría solicitada no existe."
+
+msgid "La fecha debe estar entre la creación de la deuda y hoy."
+msgstr "La fecha debe estar entre la creación de la deuda y hoy."
+
+msgid "La fecha del abono no puede estar en el futuro."
+msgstr "La fecha del abono no puede estar en el futuro."
+
+msgid "La fecha del gasto no puede estar en el futuro."
+msgstr "La fecha del gasto no puede estar en el futuro."
+
+msgid "La fecha del ingreso no puede estar en el futuro."
+msgstr "La fecha del ingreso no puede estar en el futuro."
+
+msgid "La meta contiene datos inválidos: %(value0)s"
+msgstr "La meta contiene datos inválidos: %(value0)s"
+
+msgid "La meta de ahorro no existe."
+msgstr "La meta de ahorro no existe."
+
+msgid "Los abonos reducen el capital. No se cobran intereses automáticamente."
+msgstr ""
+"Los abonos reducen el capital. No se cobran intereses automáticamente."
+
+msgid "Límite mensual"
+msgstr "Límite mensual"
+
+msgid "MI ESPACIO"
+msgstr "MI ESPACIO"
+
+msgid "Mes"
+msgstr "Mes"
+
+msgid "Meta de ahorro creada correctamente."
+msgstr "Meta de ahorro creada correctamente."
+
+msgid "Metas de ahorro"
+msgstr "Metas de ahorro"
+
+msgid "Mis deudas"
+msgstr "Mis deudas"
+
+msgid "Mis gastos"
+msgstr "Mis gastos"
+
+msgid "Mis gastos | FinanSmart"
+msgstr "Mis gastos | FinanSmart"
+
+msgid "Mis ingresos"
+msgstr "Mis ingresos"
+
+msgid "Mis ingresos | FinanSmart"
+msgstr "Mis ingresos | FinanSmart"
+
+msgid "Mis metas de ahorro"
+msgstr "Mis metas de ahorro"
+
+msgid "Mis metas | FinanSmart"
+msgstr "Mis metas | FinanSmart"
+
+msgid "Mis presupuestos"
+msgstr "Mis presupuestos"
+
+msgid "Monto"
+msgstr "Monto"
+
+msgid "Monto actual"
+msgstr "Monto actual"
+
+msgid "Monto actual:"
+msgstr "Monto actual:"
+
+msgid "Monto del abono"
+msgstr "Monto del abono"
+
+msgid "Monto objetivo"
+msgstr "Monto objetivo"
+
+msgid "Monto objetivo:"
+msgstr "Monto objetivo:"
+
+msgid "Navegación principal"
+msgstr "Navegación principal"
+
+msgid "Nombre"
+msgstr "Nombre"
+
+msgid "Nombre de la meta"
+msgstr "Nombre de la meta"
+
+msgid "Objetivo:"
+msgstr "Objetivo:"
+
+msgid "PASO A PASO"
+msgstr "PASO A PASO"
+
+msgid "PLANIFICA TU MES"
+msgstr "PLANIFICA TU MES"
+
+msgid "Pequeños pasos. Grandes metas."
+msgstr "Pequeños pasos. Grandes metas."
+
+msgid "Presupuestos"
+msgstr "Presupuestos"
+
+msgid "Progreso:"
+msgstr "Progreso:"
+
+msgid "RECOMMENDATION_ENGINE debe ser: %(value0)s."
+msgstr "RECOMMENDATION_ENGINE debe ser: %(value0)s."
+
+msgid "Registra el gasto para validarlo contra tu presupuesto mensual."
+msgstr "Registra el gasto para validarlo contra tu presupuesto mensual."
+
+msgid "Registra una nueva entrada de dinero."
+msgstr "Registra una nueva entrada de dinero."
+
+msgid "Registrar abono"
+msgstr "Registrar abono"
+
+msgid "Registrar deuda"
+msgstr "Registrar deuda"
+
+msgid "Registrar gasto"
+msgstr "Registrar gasto"
+
+msgid "Registrar gasto | FinanSmart"
+msgstr "Registrar gasto | FinanSmart"
+
+msgid "Registrar ingreso"
+msgstr "Registrar ingreso"
+
+msgid "Registrar ingreso | FinanSmart"
+msgstr "Registrar ingreso | FinanSmart"
+
+msgid "Registrar nuevo gasto"
+msgstr "Registrar nuevo gasto"
+
+msgid "Registrar nuevo ingreso"
+msgstr "Registrar nuevo ingreso"
+
+msgid "Resumen"
+msgstr "Resumen"
+
+msgid "Resumen financiero"
+msgstr "Resumen financiero"
+
+msgid "Saldo pendiente"
+msgstr "Saldo pendiente"
+
+msgid "Salir"
+msgstr "Salir"
+
+msgid "Saltar al contenido"
+msgstr "Saltar al contenido"
+
+msgid "Selecciona una categoría"
+msgstr "Selecciona una categoría"
+
+msgid "Selecciona una categoría y el límite que quieres respetar."
+msgstr "Selecciona una categoría y el límite que quieres respetar."
+
+msgid "Servicios"
+msgstr "Servicios"
+
+msgid "Servicios conectados"
+msgstr "Servicios conectados"
+
+msgid ""
+"Superaste tu presupuesto de %(value0)s en $%(value1)s. Revisa tus últimos "
+"gastos y ajusta tus próximas compras."
+msgstr ""
+"Superaste tu presupuesto de %(value0)s en $%(value1)s. Revisa tus últimos "
+"gastos y ajusta tus próximas compras."
+
+msgid "TU DINERO, CON CLARIDAD"
+msgstr "TU DINERO, CON CLARIDAD"
+
+msgid "Tasa de referencia publicada; no es una cotización de compraventa."
+msgstr "Tasa de referencia publicada; no es una cotización de compraventa."
+
+msgid "Tasa mensual. La estimación no genera cargos automáticos."
+msgstr "Tasa mensual. La estimación no genera cargos automáticos."
+
+msgid "Tipo de cambio de referencia"
+msgstr "Tipo de cambio de referencia"
+
+msgid "Todavía no has creado metas de ahorro."
+msgstr "Todavía no has creado metas de ahorro."
+
+msgid "Todavía no has registrado gastos."
+msgstr "Todavía no has registrado gastos."
+
+msgid "Todavía no has registrado ingresos."
+msgstr "Todavía no has registrado ingresos."
+
+msgid "Tu primer presupuesto empieza aquí"
+msgstr "Tu primer presupuesto empieza aquí"
+
+msgid "Tus finanzas, en un solo lugar."
+msgstr "Tus finanzas, en un solo lugar."
+
+msgid "Usuario o contraseña incorrectos."
+msgstr "Usuario o contraseña incorrectos."
+
+msgid ""
+"Vas bien. Has utilizado el %(value0)s%% de tu presupuesto de %(value1)s."
+msgstr ""
+"Vas bien. Has utilizado el %(value0)s%% de tu presupuesto de %(value1)s."
+
+msgid "Ver todos"
+msgstr "Ver todos"
+
+msgid "Volver al inicio"
+msgstr "Volver al inicio"
+
+msgid ""
+"[MODO MOCK] Recomendación simulada: revisa tus gastos antes de realizar otra"
+" compra."
+msgstr ""
+"[MODO MOCK] Recomendación simulada: revisa tus gastos antes de realizar otra"
+" compra."
+
+msgid "año"
+msgstr "año"
+
+msgid "categoría"
+msgstr "categoría"
+
+msgid "categorías"
+msgstr "categorías"
+
+msgid "descripción"
+msgstr "descripción"
+
+msgid "fecha"
+msgstr "fecha"
+
+msgid "fecha de creación"
+msgstr "fecha de creación"
+
+msgid "fecha objetivo"
+msgstr "fecha objetivo"
+
+msgid "gasto"
+msgstr "gasto"
+
+msgid "ingreso"
+msgstr "ingreso"
+
+msgid "límite"
+msgstr "límite"
+
+msgid "mes"
+msgstr "mes"
+
+msgid "meta de ahorro"
+msgstr "meta de ahorro"
+
+msgid "monto"
+msgstr "monto"
+
+msgid "monto actual"
+msgstr "monto actual"
+
+msgid "monto objetivo"
+msgstr "monto objetivo"
+
+msgid "nombre"
+msgstr "nombre"
+
+msgid "presupuesto"
+msgstr "presupuesto"
+
+msgid "usuario"
+msgstr "usuario"
+
+msgid "Últimos gastos"
+msgstr "Últimos gastos"
+
+msgid "No tienes un presupuesto configurado para %(category)s en %(period)s."
+msgstr "No tienes un presupuesto configurado para %(category)s en %(period)s."
+
+msgid "El gasto requiere los campos: %(fields)s."
+msgstr "El gasto requiere los campos: %(fields)s."
+
+msgid "activa"
+msgstr "activa"
+
+msgid "presupuestos"
+msgstr "presupuestos"
+
+msgid "gastos"
+msgstr "gastos"
+
+msgid "ingresos"
+msgstr "ingresos"
+
+msgid "metas de ahorro"
+msgstr "metas de ahorro"
+
+msgid "abonos de ahorro"
+msgstr "abonos de ahorro"
+
+msgid "abono de ahorro"
+msgstr "abono de ahorro"

@@ -1,0 +1,58 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-11 03:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#, python-brace-format, python-format
+msgid "Vas bien. Has utilizado el {pct:.1f}% de tu presupuesto de {category}."
+msgstr "Vas bien. Has utilizado el {pct:.1f}% de tu presupuesto de {category}."
+
+#, python-brace-format, python-format
+msgid ""
+"Atención: has utilizado el {pct:.1f}% de tu presupuesto de {category}. Reduce los gastos no "
+"esenciales."
+msgstr ""
+"Atención: has utilizado el {pct:.1f}% de tu presupuesto de {category}. Reduce los gastos no "
+"esenciales."
+
+#, python-brace-format
+msgid ""
+"Superaste tu presupuesto de {category} en ${amount:,.2f}. Revisa tus últimos gastos y ajusta tus "
+"próximas compras."
+msgstr ""
+"Superaste tu presupuesto de {category} en ${amount:,.2f}. Revisa tus últimos gastos y ajusta tus "
+"próximas compras."
+
+msgid "Se requiere un cuerpo JSON válido."
+msgstr "Se requiere un cuerpo JSON válido."
+
+msgid "Faltan campos obligatorios: "
+msgstr "Faltan campos obligatorios: "
+
+msgid "category_name no puede estar vacío."
+msgstr "category_name no puede estar vacío."
+
+msgid "spent y limit deben ser valores numéricos finitos."
+msgstr "spent y limit deben ser valores numéricos finitos."
+
+msgid "spent no puede ser negativo."
+msgstr "spent no puede ser negativo."
+
+msgid "limit debe ser mayor que cero."
+msgstr "limit debe ser mayor que cero."

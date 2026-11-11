@@ -1,0 +1,12 @@
+{% extends 'base.html' %}{% load i18n %}
+{% block title %}{% translate 'Reportes financieros' %} · FinanSmart{% endblock %}
+{% block content %}
+<header class="page-heading"><p class="eyebrow">FinanSmart</p><h1>{% translate 'Reportes financieros' %}</h1><p class="muted">{% translate 'Los reportes se calculan en segundo plano mediante Celery y Redis.' %}</p></header>
+<section class="card form-card"><h2>{% translate 'Solicitar reporte mensual' %}</h2><form method="post">{% csrf_token %}
+<p><label for="report-month">{% translate 'Mes' %}</label><input id="report-month" type="number" name="month" min="1" max="12" value="{{ current_month }}" required></p>
+<p><label for="report-year">{% translate 'Año' %}</label><input id="report-year" type="number" name="year" min="2000" max="{{ current_year }}" value="{{ current_year }}" required></p>
+<button type="submit">{% translate 'Generar en segundo plano' %}</button></form></section>
+<section class="card"><h2>{% translate 'Historial de reportes' %}</h2>{% for job in reports %}<article class="transaction"><div><strong>{{ job.month }}/{{ job.year }}</strong><small>{{ job.get_status_display }}</small></div><div>
+{% if job.status == 'done' %}<p>{% translate 'Ingresos' %}: ${{ job.result.income }} COP</p><p>{% translate 'Gastos' %}: ${{ job.result.expenses }} COP</p><strong>{% translate 'Balance' %}: ${{ job.result.balance }} COP</strong>
+{% elif job.status == 'failed' %}<span>{% translate 'Revisa el broker o worker.' %}</span>{% else %}<span>{% translate 'Actualiza la página para consultar el estado.' %}</span>{% endif %}</div></article>{% empty %}<p>{% translate 'Aún no hay reportes solicitados.' %}</p>{% endfor %}</section>
+{% endblock %}

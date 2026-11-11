@@ -62,7 +62,7 @@ class IncomeQueryServiceTests(TestCase):
             username="user_income_other",
             password="pass1234",
         )
-        self.category = Category.objects.create(name="Salario")
+        self.category, _ = Category.objects.get_or_create(name="Salario")
         self.service = IncomeQueryService()
 
     def test_list_for_user_returns_only_user_incomes(self):

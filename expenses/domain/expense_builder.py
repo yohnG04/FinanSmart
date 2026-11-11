@@ -1,3 +1,4 @@
+from django.utils.translation import gettext as _
 from datetime import date
 from decimal import Decimal, InvalidOperation
 from typing import Any
@@ -26,7 +27,7 @@ class ExpenseBuilder:
             self._amount = Decimal(str(amount))
         except (InvalidOperation, TypeError, ValueError) as error:
             raise ExpenseBuildError(
-                "El monto del gasto no es válido."
+                _('El monto del gasto no es válido.')
             ) from error
 
         return self
@@ -68,17 +69,17 @@ class ExpenseBuilder:
             expense.full_clean()
         except ValidationError as error:
             raise ExpenseBuildError(
-                f"El gasto contiene datos inválidos: {error}"
+                _('El gasto contiene datos inválidos: %(value0)s') % {'value0': f'{error}'}
             ) from error
 
         return expense
 
     def _validate_required_fields(self) -> None:
         required_fields = {
-            "usuario": self._user,
-            "monto": self._amount,
-            "categoría": self._category,
-            "fecha": self._date,
+            _('usuario'): self._user,
+            _('monto'): self._amount,
+            _('categoría'): self._category,
+            _('fecha'): self._date,
         }
 
         missing_fields = [
@@ -90,13 +91,13 @@ class ExpenseBuilder:
         if missing_fields:
             fields = ", ".join(missing_fields)
             raise ExpenseBuildError(
-                f"Faltan campos obligatorios: {fields}."
+                _("El gasto requiere los campos: %(fields)s.") % {'fields': fields}
             )
 
     def _validate_business_rules(self) -> None:
         if self._amount is not None and self._amount <= 0:
             raise ExpenseBuildError(
-                "El monto del gasto debe ser mayor que cero."
+                _('El monto del gasto debe ser mayor que cero.')
             )
 
         if (
@@ -104,5 +105,5 @@ class ExpenseBuilder:
             and self._date > timezone.localdate()
         ):
             raise ExpenseBuildError(
-                "La fecha del gasto no puede estar en el futuro."
+                _('La fecha del gasto no puede estar en el futuro.')
             )

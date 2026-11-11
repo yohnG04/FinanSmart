@@ -1,3 +1,4 @@
+from django.utils.translation import gettext as _
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
@@ -8,10 +9,14 @@ from expenses.infra.recommendation_engines import (
 )
 
 
+from expenses.infra.remote_recommendations import RemoteRecommendationEngine
+
+
 class RecommendationEngineFactory:
     _engines = {
         "MOCK": MockRecommendationEngine,
         "REAL": BudgetRecommendationEngine,
+        "REMOTE": RemoteRecommendationEngine,
     }
 
     def create(self) -> RecommendationEngine:
@@ -21,7 +26,7 @@ class RecommendationEngineFactory:
         if engine_class is None:
             valid_modes = ", ".join(self._engines.keys())
             raise ImproperlyConfigured(
-                f"RECOMMENDATION_ENGINE debe ser: {valid_modes}."
+                _('RECOMMENDATION_ENGINE debe ser: %(value0)s.') % {'value0': f'{valid_modes}'}
             )
 
         return engine_class()

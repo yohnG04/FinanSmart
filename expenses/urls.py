@@ -15,7 +15,7 @@ app_name = "expenses"
 
 urlpatterns = [
     path(
-        "",
+        "gastos/",
         ExpenseListView.as_view(),
         name="expense-list",
     ),

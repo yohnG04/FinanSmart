@@ -1,3 +1,4 @@
+from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -50,7 +51,7 @@ class ExpenseCreateView(LoginRequiredMixin, FormView):
 
         messages.success(
             self.request,
-            f"Gasto registrado. {result.recommendation}",
+            _('Gasto registrado. %(value0)s') % {'value0': f'{result.recommendation}'},
         )
 
         return super().form_valid(form)
@@ -89,7 +90,7 @@ class IncomeCreateView(LoginRequiredMixin, FormView):
 
         messages.success(
             self.request,
-            "Ingreso registrado correctamente.",
+            _('Ingreso registrado correctamente.'),
         )
 
         return super().form_valid(form)
@@ -129,7 +130,7 @@ class SavingsGoalCreateView(LoginRequiredMixin, FormView):
 
         messages.success(
             self.request,
-            "Meta de ahorro creada correctamente.",
+            _('Meta de ahorro creada correctamente.'),
         )
 
         return super().form_valid(form)
@@ -180,6 +181,8 @@ class SavingsContributionCreateView(LoginRequiredMixin, FormView):
     )
 
     def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
         try:
             self.goal = self.service_provider().get_for_user(
                 user=request.user,
@@ -203,7 +206,7 @@ class SavingsContributionCreateView(LoginRequiredMixin, FormView):
 
         messages.success(
             self.request,
-            "Abono registrado correctamente.",
+            _('Abono registrado correctamente.'),
         )
 
         return super().form_valid(form)

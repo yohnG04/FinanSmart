@@ -1,3 +1,4 @@
+from django.utils.translation import gettext_lazy as _
 from decimal import Decimal
 
 from django.conf import settings
@@ -10,17 +11,17 @@ class Category(models.Model):
     name = models.CharField(
         max_length=100,
         unique=True,
-        verbose_name="nombre",
+        verbose_name=_('nombre'),
     )
     active = models.BooleanField(
         default=True,
-        verbose_name="activa",
+        verbose_name=_("activa"),
     )
 
     class Meta:
         ordering = ["name"]
-        verbose_name = "categoría"
-        verbose_name_plural = "categorías"
+        verbose_name = _('categoría')
+        verbose_name_plural = _('categorías')
 
     def __str__(self) -> str:
         return self.name
@@ -31,31 +32,31 @@ class Budget(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="budgets",
-        verbose_name="usuario",
+        verbose_name=_('usuario'),
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.PROTECT,
         related_name="budgets",
-        verbose_name="categoría",
+        verbose_name=_('categoría'),
     )
     amount_limit = models.DecimalField(
         max_digits=12,
         decimal_places=2,
         validators=[MinValueValidator(Decimal("0.01"))],
-        verbose_name="límite",
+        verbose_name=_('límite'),
     )
     month = models.PositiveSmallIntegerField(
-        verbose_name="mes",
+        verbose_name=_('mes'),
     )
     year = models.PositiveSmallIntegerField(
-        verbose_name="año",
+        verbose_name=_('año'),
     )
 
     class Meta:
         ordering = ["-year", "-month", "category__name"]
-        verbose_name = "presupuesto"
-        verbose_name_plural = "presupuestos"
+        verbose_name = _('presupuesto')
+        verbose_name_plural = _("presupuestos")
         constraints = [
             models.UniqueConstraint(
                 fields=["user", "category", "month", "year"],
@@ -68,7 +69,7 @@ class Budget(models.Model):
 
         if not 1 <= self.month <= 12:
             raise ValidationError({
-                "month": "El mes debe estar entre 1 y 12."
+                "month": _('El mes debe estar entre 1 y 12.')
             })
 
     def __str__(self) -> str:
@@ -83,37 +84,37 @@ class Expense(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="expenses",
-        verbose_name="usuario",
+        verbose_name=_('usuario'),
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.PROTECT,
         related_name="expenses",
-        verbose_name="categoría",
+        verbose_name=_('categoría'),
     )
     amount = models.DecimalField(
         max_digits=12,
         decimal_places=2,
         validators=[MinValueValidator(Decimal("0.01"))],
-        verbose_name="monto",
+        verbose_name=_('monto'),
     )
     date = models.DateField(
-        verbose_name="fecha",
+        verbose_name=_('fecha'),
     )
     description = models.CharField(
         max_length=255,
         blank=True,
-        verbose_name="descripción",
+        verbose_name=_('descripción'),
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name="fecha de creación",
+        verbose_name=_('fecha de creación'),
     )
 
     class Meta:
         ordering = ["-date", "-created_at"]
-        verbose_name = "gasto"
-        verbose_name_plural = "gastos"
+        verbose_name = _('gasto')
+        verbose_name_plural = _("gastos")
 
     def __str__(self) -> str:
         return f"{self.category}: ${self.amount}"
@@ -123,37 +124,37 @@ class Income(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="incomes",
-        verbose_name="usuario",
+        verbose_name=_('usuario'),
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.PROTECT,
         related_name="incomes",
-        verbose_name="categoría",
+        verbose_name=_('categoría'),
     )
     amount = models.DecimalField(
         max_digits=12,
         decimal_places=2,
         validators=[MinValueValidator(Decimal("0.01"))],
-        verbose_name="monto",
+        verbose_name=_('monto'),
     )
     date = models.DateField(
-        verbose_name="fecha",
+        verbose_name=_('fecha'),
     )
     description = models.CharField(
         max_length=255,
         blank=True,
-        verbose_name="descripción",
+        verbose_name=_('descripción'),
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name="fecha de creación",
+        verbose_name=_('fecha de creación'),
     )
 
     class Meta:
         ordering = ["-date", "-created_at"]
-        verbose_name = "ingreso"
-        verbose_name_plural = "ingresos"
+        verbose_name = _('ingreso')
+        verbose_name_plural = _("ingresos")
 
     def __str__(self) -> str:
         return f"{self.category}: ${self.amount}"
@@ -164,39 +165,39 @@ class SavingsGoal(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="savings_goals",
-        verbose_name="usuario",
+        verbose_name=_('usuario'),
     )
     name = models.CharField(
         max_length=150,
-        verbose_name="nombre",
+        verbose_name=_('nombre'),
     )
     target_amount = models.DecimalField(
         max_digits=12,
         decimal_places=2,
         validators=[MinValueValidator(Decimal("0.01"))],
-        verbose_name="monto objetivo",
+        verbose_name=_('monto objetivo'),
     )
     current_amount = models.DecimalField(
         max_digits=12,
         decimal_places=2,
         default=Decimal("0.00"),
         validators=[MinValueValidator(Decimal("0.00"))],
-        verbose_name="monto actual",
+        verbose_name=_('monto actual'),
     )
     target_date = models.DateField(
         null=True,
         blank=True,
-        verbose_name="fecha objetivo",
+        verbose_name=_('fecha objetivo'),
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name="fecha de creación",
+        verbose_name=_('fecha de creación'),
     )
 
     class Meta:
         ordering = ["-created_at"]
-        verbose_name = "meta de ahorro"
-        verbose_name_plural = "metas de ahorro"
+        verbose_name = _('meta de ahorro')
+        verbose_name_plural = _("metas de ahorro")
 
     def clean(self) -> None:
         super().clean()
@@ -204,7 +205,7 @@ class SavingsGoal(models.Model):
         if self.current_amount > self.target_amount:
             raise ValidationError({
                 "current_amount":
-                    "El monto actual no puede superar el monto objetivo."
+                    _('El monto actual no puede superar el monto objetivo.')
             })
 
     def __str__(self) -> str:
@@ -215,26 +216,26 @@ class SavingsContribution(models.Model):
         SavingsGoal,
         on_delete=models.CASCADE,
         related_name="contributions",
-        verbose_name="meta de ahorro",
+        verbose_name=_('meta de ahorro'),
     )
     amount = models.DecimalField(
         max_digits=12,
         decimal_places=2,
         validators=[MinValueValidator(Decimal("0.01"))],
-        verbose_name="monto",
+        verbose_name=_('monto'),
     )
     date = models.DateField(
-        verbose_name="fecha",
+        verbose_name=_('fecha'),
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name="fecha de creación",
+        verbose_name=_('fecha de creación'),
     )
 
     class Meta:
         ordering = ["-date", "-created_at"]
-        verbose_name = "abono de ahorro"
-        verbose_name_plural = "abonos de ahorro"
+        verbose_name = _("abono de ahorro")
+        verbose_name_plural = _("abonos de ahorro")
 
     def __str__(self) -> str:
         return f"{self.goal.name}: ${self.amount}"

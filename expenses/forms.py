@@ -1,3 +1,4 @@
+from django.utils.translation import gettext_lazy as _
 from django import forms
 from django.utils import timezone
 
@@ -6,39 +7,39 @@ from expenses.models import Category
 
 class ExpenseForm(forms.Form):
     amount = forms.DecimalField(
-        label="Monto",
+        label=_('Monto'),
         max_digits=12,
         decimal_places=2,
         min_value=0.01,
         widget=forms.NumberInput(
             attrs={
-                "placeholder": "Ejemplo: 50000",
+                "placeholder": _('Ejemplo: 50000'),
                 "step": "0.01",
             }
         ),
     )
 
     date = forms.DateField(
-        label="Fecha",
+        label=_('Fecha'),
         widget=forms.DateInput(
-            attrs={"type": "date"}
+            attrs={"type": "date"}, format="%Y-%m-%d"
         ),
     )
 
     category = forms.ModelChoiceField(
-        label="Categoría",
+        label=_('Categoría'),
         queryset=Category.objects.none(),
-        empty_label="Selecciona una categoría",
+        empty_label=_('Selecciona una categoría'),
     )
 
     description = forms.CharField(
-        label="Descripción",
+        label=_('Descripción'),
         required=False,
         max_length=255,
         widget=forms.Textarea(
             attrs={
                 "rows": 3,
-                "placeholder": "Descripción opcional",
+                "placeholder": _('Descripción opcional'),
             }
         ),
     )
@@ -56,39 +57,39 @@ class ExpenseForm(forms.Form):
 
 class IncomeForm(forms.Form):
     amount = forms.DecimalField(
-        label="Monto",
+        label=_('Monto'),
         max_digits=12,
         decimal_places=2,
         min_value=0.01,
         widget=forms.NumberInput(
             attrs={
-                "placeholder": "Ejemplo: 1200000",
+                "placeholder": _('Ejemplo: 1200000'),
                 "step": "0.01",
             }
         ),
     )
 
     date = forms.DateField(
-        label="Fecha",
+        label=_('Fecha'),
         widget=forms.DateInput(
-            attrs={"type": "date"}
+            attrs={"type": "date"}, format="%Y-%m-%d"
         ),
     )
 
     category = forms.ModelChoiceField(
-        label="Categoría",
+        label=_('Categoría'),
         queryset=Category.objects.none(),
-        empty_label="Selecciona una categoría",
+        empty_label=_('Selecciona una categoría'),
     )
 
     description = forms.CharField(
-        label="Descripción",
+        label=_('Descripción'),
         required=False,
         max_length=255,
         widget=forms.Textarea(
             attrs={
                 "rows": 3,
-                "placeholder": "Descripción opcional",
+                "placeholder": _('Descripción opcional'),
             }
         ),
     )
@@ -106,30 +107,30 @@ class IncomeForm(forms.Form):
 
 class SavingsGoalForm(forms.Form):
     name = forms.CharField(
-        label="Nombre de la meta",
+        label=_('Nombre de la meta'),
         max_length=150,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Ejemplo: Comprar computador"
+                "placeholder": _('Ejemplo: Comprar computador')
             }
         ),
     )
 
     target_amount = forms.DecimalField(
-        label="Monto objetivo",
+        label=_('Monto objetivo'),
         max_digits=12,
         decimal_places=2,
         min_value=0.01,
         widget=forms.NumberInput(
             attrs={
-                "placeholder": "Ejemplo: 5000000",
+                "placeholder": _('Ejemplo: 5000000'),
                 "step": "0.01",
             }
         ),
     )
 
     current_amount = forms.DecimalField(
-        label="Monto actual",
+        label=_('Monto actual'),
         max_digits=12,
         decimal_places=2,
         min_value=0,
@@ -137,39 +138,39 @@ class SavingsGoalForm(forms.Form):
         initial=0,
         widget=forms.NumberInput(
             attrs={
-                "placeholder": "Ejemplo: 1000000",
+                "placeholder": _('Ejemplo: 1000000'),
                 "step": "0.01",
             }
         ),
     )
 
     target_date = forms.DateField(
-        label="Fecha objetivo",
+        label=_('Fecha objetivo'),
         required=False,
         widget=forms.DateInput(
-            attrs={"type": "date"}
+            attrs={"type": "date"}, format="%Y-%m-%d"
         ),
     )
 
 
 class SavingsContributionForm(forms.Form):
     amount = forms.DecimalField(
-        label="Monto del abono",
+        label=_('Monto del abono'),
         max_digits=12,
         decimal_places=2,
         min_value=0.01,
         widget=forms.NumberInput(
             attrs={
-                "placeholder": "Ejemplo: 200000",
+                "placeholder": _('Ejemplo: 200000'),
                 "step": "0.01",
             }
         ),
     )
 
     date = forms.DateField(
-        label="Fecha",
+        label=_('Fecha'),
         widget=forms.DateInput(
-            attrs={"type": "date"}
+            attrs={"type": "date"}, format="%Y-%m-%d"
         ),
     )
 

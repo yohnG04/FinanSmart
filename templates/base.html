@@ -1,158 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        {% block title %}
-        FinanSmart
-        {% endblock %}
-    </title>
-
-    <style>
-        body {
-            margin: 0;
-            background: #f4f6f8;
-            color: #1f2937;
-            font-family: Arial, sans-serif;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 10%;
-            background: white;
-            border-bottom: 1px solid #dddddd;
-        }
-
-        nav a {
-            margin-right: 16px;
-            color: #1f2937;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        main {
-            width: min(900px, 90%);
-            margin: 32px auto;
-        }
-
-        .card {
-            padding: 24px;
-            margin-bottom: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        .message {
-            padding: 14px;
-            margin-bottom: 16px;
-            background: #e8f5e9;
-            border-radius: 8px;
-        }
-
-        .errorlist {
-            color: #b91c1c;
-        }
-
-        input,
-        select,
-        textarea {
-            box-sizing: border-box;
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #cccccc;
-            border-radius: 6px;
-        }
-
-        button,
-        .button {
-            display: inline-block;
-            padding: 10px 16px;
-            color: white;
-            background: #2563eb;
-            border: 0;
-            border-radius: 6px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .logout-form {
-            display: inline;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #dddddd;
-            text-align: left;
-        }
-    </style>
-</head>
-
-<body>
-    <nav>
-        <div>
-            <a href="{% url 'expenses:expense-list' %}">
-                FinanSmart
-            </a>
-
-            {% if user.is_authenticated %}
-                <a href="{% url 'expenses:expense-list' %}">
-                    Gastos
-                </a>
-
-                <a href="{% url 'expenses:income-list' %}">
-                    Ingresos
-                </a>
-
-                <a href="{% url 'expenses:savings-goal-list' %}">
-                    Metas
-                </a>
-            {% endif %}
-            
-        </div>
-
-        <div>
-            {% if user.is_authenticated %}
-                <span>{{ user.username }}</span>
-
-                <form
-                    class="logout-form"
-                    method="post"
-                    action="{% url 'logout' %}"
-                >
-                    {% csrf_token %}
-                    <button type="submit">
-                        Cerrar sesión
-                    </button>
-                </form>
-            {% endif %}
-        </div>
-    </nav>
-
-    <main>
-        {% for message in messages %}
-            <div class="message">
-                {{ message }}
-            </div>
-        {% endfor %}
-
-        {% block content %}
-        {% endblock %}
-    </main>
-</body>
-</html>
+{% load i18n static %}{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html><html lang="{{ LANGUAGE_CODE }}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{% block title %}FinanSmart{% endblock %}</title><link rel="stylesheet" href="{% static 'finance/app.css' %}"></head>
+<body><a class="skip" href="#main">{% translate 'Saltar al contenido' %}</a>
+<aside class="sidebar"><a class="brand" href="{% url 'finance:dashboard' %}"><b>F</b> FinanSmart.</a><p class="eyebrow">{% translate 'MI ESPACIO' %}</p>
+{% if user.is_authenticated %}<nav aria-label="{% translate 'Navegación principal' %}">
+<a href="{% url 'finance:dashboard' %}" {% if request.resolver_match.url_name == 'dashboard' %}aria-current="page"{% endif %}>◈ {% translate 'Resumen' %}</a>
+<a href="{% url 'expenses:expense-list' %}" {% if '/gastos/' in request.path %}aria-current="page"{% endif %}>↗ {% translate 'Gastos' %}</a>
+<a href="{% url 'expenses:income-list' %}" {% if '/ingresos/' in request.path %}aria-current="page"{% endif %}>↙ {% translate 'Ingresos' %}</a>
+<a href="{% url 'finance:budgets' %}" {% if '/presupuestos/' in request.path %}aria-current="page"{% endif %}>▤ {% translate 'Presupuestos' %}</a>
+<a href="{% url 'expenses:savings-goal-list' %}" {% if '/metas/' in request.path %}aria-current="page"{% endif %}>◎ {% translate 'Metas de ahorro' %}</a>
+<a href="{% url 'finance:debts' %}" {% if '/deudas/' in request.path %}aria-current="page"{% endif %}>≋ {% translate 'Deudas' %}</a>
+<a href="{% url 'finance:integrations' %}" {% if '/servicios/' in request.path %}aria-current="page"{% endif %}>⊞ {% translate 'Servicios' %}</a>
+<a href="{% url 'premium:plans' %}" {% if '/premium/' in request.path and '/reportes/' not in request.path %}aria-current="page"{% endif %}>★ {% translate 'Planes premium' %}</a>
+<a href="{% url 'premium:reports' %}" {% if '/premium/reportes/' in request.path %}aria-current="page"{% endif %}>▥ {% translate 'Reportes financieros' %}</a>
+</nav>{% endif %}<p class="sidebar-note">{% translate 'Pequeños pasos. Grandes metas.' %}</p></aside>
+<div class="workspace"><header class="topbar"><span class="muted">{% translate 'Tus finanzas, en un solo lugar.' %}</span><div class="top-actions"><form class="language" action="{% url 'set_language' %}" method="post">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><label class="sr-only" for="language">{% translate 'Idioma' %}</label><select id="language" name="language"><option value="es" {% if LANGUAGE_CODE == 'es' %}selected{% endif %}>Español</option><option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option></select><button class="secondary" type="submit">{% translate 'Cambiar' %}</button></form>{% if user.is_authenticated %}<span class="username">{{ user.username }}</span><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="secondary" type="submit">{% translate 'Salir' %}</button></form>{% endif %}</div></header>
+<main id="main" tabindex="-1">{% for message in messages %}<div class="message {{ message.tags }}" role="status">{{ message }}</div>{% endfor %}{% block content %}{% endblock %}</main><footer>FinanSmart · {% translate 'Cada decisión cuenta.' %}</footer></div></body></html>

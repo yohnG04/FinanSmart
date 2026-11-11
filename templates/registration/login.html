@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 
+{% load i18n %}
 {% block title %}
-Iniciar sesión | FinanSmart
+{% translate "Iniciar sesión | FinanSmart" %}
 {% endblock %}
 
 {% block content %}
 <div class="card">
-    <h1>Iniciar sesión</h1>
+    <h1>{% translate "Iniciar sesión" %}</h1>
 
     {% if form.errors %}
         <p class="errorlist">
-            Usuario o contraseña incorrectos.
+            {% translate "Usuario o contraseña incorrectos." %}
         </p>
     {% endif %}
 
@@ -20,7 +21,7 @@ Iniciar sesión | FinanSmart
         {{ form.as_p }}
 
         <button type="submit">
-            Iniciar sesión
+            {% translate "Iniciar sesión" %}
         </button>
     </form>
 </div>
