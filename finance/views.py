@@ -2,15 +2,18 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ValidationError
 from django.urls import reverse_lazy
+from django.conf import settings
+from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, FormView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .forms import DebtForm, ContributionForm, BudgetForm
+from .forms import DebtForm, ContributionForm, BudgetForm, FashionForm
 from .services import DebtService, BudgetService, DashboardService
-from .integrations import IntegrationService, FrankfurterAdapter, AllyAdapter
+from .integrations import IntegrationService, FrankfurterAdapter, IntegrationUnavailable
+from .volt import FashionService, VoltAdapter
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
@@ -88,12 +91,39 @@ class BudgetCreateView(ValidatedFormView):
         BudgetService().save(self.request.user, data)
 
 
-class IntegrationView(LoginRequiredMixin, TemplateView):
+class IntegrationView(LoginRequiredMixin, FormView):
     template_name = 'finance/integrations.html'
+    form_class = FashionForm
+    success_url = reverse_lazy('finance:integrations')
+
+    def state_key(self):
+        return f'volt_chat_{self.request.user.pk}'
+
+    def post(self, request, *args, **kwargs):
+        if request.POST.get('action') == 'reset':
+            request.session.pop(self.state_key(), None)
+            return redirect(self.success_url)
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        state = self.request.session.get(self.state_key(), {})
+        try:
+            result = FashionService(VoltAdapter()).ask(
+                **form.cleaned_data, conversation_id=state.get('conversation_id'))
+        except IntegrationUnavailable as error:
+            form.add_error(None, str(error))
+            return self.form_invalid(form)
+        result['question'] = form.cleaned_data['message']
+        result['max_price'] = str(form.cleaned_data['max_price']) if form.cleaned_data['max_price'] is not None else ''
+        self.request.session[self.state_key()] = result
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
-        service = IntegrationService(FrankfurterAdapter(), AllyAdapter())
-        return super().get_context_data(**kwargs) | service.context()
+        service = IntegrationService(FrankfurterAdapter())
+        return super().get_context_data(**kwargs) | service.context() | {
+            'volt_configured': bool(settings.VOLT_BASE_URL),
+            'chat': self.request.session.get(self.state_key()),
+        }
 
 
 class SummaryAPIView(APIView):

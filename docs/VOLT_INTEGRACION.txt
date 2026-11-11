@@ -1,0 +1,61 @@
+FINANSMART + VOLT: INTEGRACIÓN DEL EQUIPO ALIADO
+Actualizado: 10 de noviembre de 2026
+
+YA IMPLEMENTADO EN FINANSMART
+- En Servicios hay un asesor de ropa: consulta y precio máximo opcional por producto.
+- POST a /api/chatbot/message/ con Content-Type: application/json.
+- Se envían message y conversation_id; sin token, como indica el contrato de Volt.
+- El límite se añade al mensaje: "Precio máximo de 95000.00 COP".
+- Se conserva conversation_id por sesión de usuario y se puede iniciar otra conversación.
+- Se muestran respuesta, nombre, precio, descripción, stock y tallas de los productos.
+- El enlace abre el catálogo web de Volt: /#catalogo.
+- FinanSmart también filtra productos agotados o por encima del límite numérico.
+- Manejo de fallos y respuesta inválida, límite de tamaño y timeout de 15 segundos.
+- La interfaz está en español/inglés. La respuesta de Volt conserva su idioma.
+- No se envían los saldos, ingresos o datos de cuenta de FinanSmart.
+
+QUÉ FALTA PARA PROBARLO DE VERDAD
+Pedir al equipo Volt la IP o dominio que sea accesible desde el servidor de
+FinanSmart. La documentación aún tiene <IP_O_DOMINIO_DE_VOLT>, que es un marcador.
+No se ha probado todavía la comunicación con su servidor real.
+
+CONFIGURACIÓN
+En .env de FinanSmart:
+VOLT_BASE_URL=https://DOMINIO-REAL-DE-VOLT
+
+También admite http://IP-REAL si ese es el despliegue proporcionado por el equipo.
+No añadir /api/chatbot/message/ a la variable: la aplicación lo añade.
+No hace falta token. ALLY_API_URL y ALLY_API_TOKEN ya no se usan.
+Reiniciar Django después de cambiar la configuración.
+
+En Docker Compose el compañero debe pasar la variable a django_web:
+  VOLT_BASE_URL: ${VOLT_BASE_URL:-}
+
+El localhost de ellos no es accesible automáticamente desde nuestro servidor.
+
+PRUEBA MANUAL TRAS CONFIGURAR
+1. Iniciar sesión y entrar a Servicios.
+2. Escribir "Busco una camisa casual para hombre".
+3. Indicar 95000 como precio máximo por producto.
+4. Consultar y verificar que aparecen datos reales del catálogo de Volt.
+5. Escribir "La prefiero roja" para continuar la conversación.
+6. Pulsar Nueva conversación y confirmar que el siguiente envío empieza sin ID.
+7. Probar sin productos y con el servicio apagado: debe informar el problema.
+8. Verificar que no se muestran tarjetas por encima del límite ni sin existencias.
+
+IMPORTANTE
+El precio máximo es manual; no calcula automáticamente el presupuesto de ropa.
+El servicio JSON que ofrecemos a Volt sigue siendo /api/summary/ (o
+/api/v1/summary/ por el Nginx actual), con autenticación Token de una cuenta demo.
+El endpoint específico de presupuesto de ropa sugerido aún NO está implementado.
+La conexión real pendiente no debe presentarse como completada solo por pasar tests.
+
+ARCHIVOS
+finance/volt.py: contrato, adaptación y filtrado.
+finance/forms.py: formulario.
+finance/views.py: envío y sesión.
+finance/templates/finance/integrations.html: interfaz.
+finance/test_volt.py: pruebas con respuestas controladas.
+
+Esta actualización reemplaza la propuesta genérica anterior de consumir un JSON
+"items/title/description" con Bearer: ahora se usa el contrato real de Volt.

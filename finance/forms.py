@@ -6,6 +6,15 @@ from .models import Debt
 from .services import BudgetService
 
 
+class FashionForm(forms.Form):
+    message = forms.CharField(label=_("¿Qué ropa buscas?"), max_length=900,
+        widget=forms.Textarea(attrs={'rows': 3, 'placeholder': _("Una camisa casual para hombre")}))
+    max_price = forms.DecimalField(label=_("Precio máximo por producto (COP)"), required=False,
+        max_digits=12, decimal_places=2, min_value=Decimal('.01'),
+        widget=forms.NumberInput(attrs={'step': '.01'}),
+        help_text=_("Opcional. Solo mostraremos productos dentro de este límite."))
+
+
 class DebtForm(forms.ModelForm):
     class Meta:
         model = Debt

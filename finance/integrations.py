@@ -58,39 +58,12 @@ class FrankfurterAdapter:
         return result
 
 
-class AllyAdapter:
-    """Proposed contract. Adapt only this mapping once the partner supplies its API."""
-    def __init__(self, fetch=fetch_json):
-        self.fetch = fetch
-
-    def items(self):
-        if not settings.ALLY_API_URL:
-            raise IntegrationUnavailable(_("El servicio del equipo aliado aún no está conectado."))
-        raw = self.fetch(settings.ALLY_API_URL, settings.ALLY_API_TOKEN)
-        try:
-            items = raw['items']
-            if not isinstance(items, list):
-                raise ValueError()
-            result = []
-            for item in items[:20]:
-                title, description = item['title'], item['description']
-                if not isinstance(title, str) or not isinstance(description, str):
-                    raise ValueError()
-                result.append(dict(title=title[:150], description=description[:1000]))
-            return result
-        except (KeyError, TypeError, ValueError) as error:
-            raise IntegrationUnavailable(_("El servicio devolvió datos inválidos.")) from error
-
-
 class IntegrationService:
-    def __init__(self, rates: RateProvider, ally):
-        self.rates, self.ally = rates, ally
+    def __init__(self, rates: RateProvider):
+        self.rates = rates
 
     def context(self):
-        context = {}
-        for key, action in [('exchange', self.rates.rate), ('ally_items', self.ally.items)]:
-            try:
-                context[key] = action()
-            except IntegrationUnavailable as error:
-                context[key + '_error'] = str(error)
-        return context
+        try:
+            return {'exchange': self.rates.rate()}
+        except IntegrationUnavailable as error:
+            return {'exchange_error': str(error)}

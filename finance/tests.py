@@ -13,7 +13,7 @@ from rest_framework.authtoken.models import Token
 from expenses.models import Budget, Category, Income, Expense
 from .models import Debt, DebtContribution
 from .services import DebtService
-from .integrations import FrankfurterAdapter, AllyAdapter, IntegrationUnavailable
+from .integrations import FrankfurterAdapter, IntegrationUnavailable
 
 
 class FinanceTests(TestCase):
@@ -110,13 +110,7 @@ class FinanceTests(TestCase):
         with self.assertRaises(IntegrationUnavailable):
             FrankfurterAdapter(Mock(return_value={'rate':'NaN'})).rate()
 
-    @override_settings(ALLY_API_URL='https://example.org/feed', ALLY_API_TOKEN='')
-    def test_ally_contract_and_invalid_response(self):
-        self.assertEqual(AllyAdapter(Mock(return_value={'items':[{'title':'Title','description':'Text'}]})).items()[0]['title'],'Title')
-        with self.assertRaises(IntegrationUnavailable):
-            AllyAdapter(Mock(return_value={'items':'invalid'})).items()
-
     @patch('finance.integrations.FrankfurterAdapter.rate', side_effect=IntegrationUnavailable('Unavailable'))
-    @override_settings(ALLY_API_URL='')
+    @override_settings(VOLT_BASE_URL='')
     def test_integration_outage_does_not_break_page(self, mock):
         self.assertContains(self.client.get('/servicios/'), 'Unavailable')

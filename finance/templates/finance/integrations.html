@@ -1,3 +1,17 @@
-{% extends 'base.html' %}{% load i18n humanize %}
-{% block content %}<header class="page-heading"><p class="eyebrow">{% translate 'INFORMACIÓN ÚTIL' %}</p><h1>{% translate 'Servicios conectados' %}</h1></header>
-<div class="grid"><section class="card"><h2>{% translate 'Tipo de cambio de referencia' %}</h2>{% if exchange %}<p class="metric">1 USD = {{ exchange.rate|floatformat:"2g" }} COP</p><p>{{ exchange.date }} · <a href="https://frankfurter.dev/">Frankfurter</a></p><p class="muted">{% translate 'Tasa de referencia publicada; no es una cotización de compraventa.' %}</p>{% else %}<p role="status">{{ exchange_error }}</p>{% endif %}</section><section class="card"><h2>{% translate 'Equipo aliado' %}</h2>{% if ally_items_error %}<p role="status">{{ ally_items_error }}</p>{% else %}{% for item in ally_items %}<h3>{{ item.title }}</h3><p>{{ item.description }}</p>{% empty %}<p>{% translate 'El servicio no tiene novedades.' %}</p>{% endfor %}{% endif %}</section></div>{% endblock %}
+{% extends 'base.html' %}{% load i18n %}
+{% block content %}
+<header class="page-heading"><p class="eyebrow">{% translate 'INFORMACIÓN ÚTIL' %}</p><h1>{% translate 'Servicios conectados' %}</h1></header>
+<section class="card"><h2>{% translate 'Asesor de ropa Volt' %}</h2>
+<p class="muted">{% translate 'Busca productos y define cuánto quieres gastar por prenda.' %}</p>
+{% if not volt_configured %}<p role="status">{% translate 'El asesor Volt aún no está conectado.' %}</p>{% endif %}
+<form method="post">{% csrf_token %}{{ form.as_p }}
+<p class="helptext">{% translate 'Al enviar, compartes tu consulta y el límite elegido con Volt. No enviamos tu resumen financiero.' %}</p>
+<button type="submit" {% if not volt_configured %}disabled{% endif %}>{% translate 'Consultar a Volt' %}</button></form>
+{% if chat %}<hr><div class="transaction"><strong>{% translate 'Última consulta' %}</strong><form method="post">{% csrf_token %}<button class="secondary" name="action" value="reset">{% translate 'Nueva conversación' %}</button></form></div>
+<p>{{ chat.question }}</p><div class="volt-reply">{{ chat.reply|linebreaksbr }}</div>
+{% if chat.max_price %}<p>{% translate 'Precio máximo por producto (COP)' %}: ${{ chat.max_price|floatformat:"2g" }}</p>{% endif %}
+{% if chat.filtered %}<p class="muted">{% translate 'Ocultamos productos sin existencias o que superan tu límite. La respuesta de Volt puede mencionarlos.' %}</p>{% endif %}
+<div class="grid">{% for product in chat.products %}<article class="card"><h3>{{ product.name }}</h3><p class="metric">${{ product.price|floatformat:"2g" }} COP</p><p>{{ product.description }}</p><p>{% translate 'Existencias' %}: {{ product.stock }}</p><p>{% translate 'Tallas' %}: {{ product.sizes }}</p><a class="button" href="{{ product.store_url }}" target="_blank" rel="noopener noreferrer">{% translate 'Ver catálogo en Volt' %} ↗</a></article>{% empty %}<p>{% translate 'No hay productos disponibles que coincidan con esta búsqueda y límite.' %}</p>{% endfor %}</div>
+{% endif %}</section>
+<section class="card"><h2>{% translate 'Tipo de cambio de referencia' %}</h2>{% if exchange %}<p class="metric">1 USD = {{ exchange.rate|floatformat:"2g" }} COP</p><p>{{ exchange.date }} · <a href="https://frankfurter.dev/">Frankfurter</a></p><p class="muted">{% translate 'Tasa de referencia publicada; no es una cotización de compraventa.' %}</p>{% else %}<p role="status">{{ exchange_error }}</p>{% endif %}</section>
+{% endblock %}

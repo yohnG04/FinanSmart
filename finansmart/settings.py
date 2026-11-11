@@ -134,8 +134,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'es'
 LANGUAGES = [('es', 'Español'), ('en', 'English')]
 LOCALE_PATHS = [BASE_DIR / 'locale']
-ALLY_API_URL = os.getenv('ALLY_API_URL', '')
-ALLY_API_TOKEN = os.getenv('ALLY_API_TOKEN', '')
+VOLT_BASE_URL = os.getenv('VOLT_BASE_URL', '')
 REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': [
     'rest_framework.authentication.SessionAuthentication',
     'rest_framework.authentication.TokenAuthentication',

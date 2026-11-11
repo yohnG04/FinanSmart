@@ -547,3 +547,72 @@ msgstr "abonos de ahorro"
 
 msgid "abono de ahorro"
 msgstr "abono de ahorro"
+
+msgid "Volt no respondió correctamente. Intenta nuevamente."
+msgstr "Volt no respondió correctamente. Intenta nuevamente."
+
+msgid "El asesor Volt aún no está conectado."
+msgstr "El asesor Volt aún no está conectado."
+
+msgid "La dirección de Volt no es válida."
+msgstr "La dirección de Volt no es válida."
+
+msgid "Volt devolvió una respuesta con formato inválido."
+msgstr "Volt devolvió una respuesta con formato inválido."
+
+msgid "La consulta completa no puede superar 1000 caracteres."
+msgstr "La consulta completa no puede superar 1000 caracteres."
+
+msgid "¿Qué ropa buscas?"
+msgstr "¿Qué ropa buscas?"
+
+msgid "Una camisa casual para hombre"
+msgstr "Una camisa casual para hombre"
+
+msgid "Precio máximo por producto (COP)"
+msgstr "Precio máximo por producto (COP)"
+
+msgid "Opcional. Solo mostraremos productos dentro de este límite."
+msgstr "Opcional. Solo mostraremos productos dentro de este límite."
+
+msgid "Asesor de ropa Volt"
+msgstr "Asesor de ropa Volt"
+
+msgid "Busca productos y define cuánto quieres gastar por prenda."
+msgstr "Busca productos y define cuánto quieres gastar por prenda."
+
+msgid ""
+"Al enviar, compartes tu consulta y el límite elegido con Volt. No enviamos "
+"tu resumen financiero."
+msgstr ""
+"Al enviar, compartes tu consulta y el límite elegido con Volt. No enviamos "
+"tu resumen financiero."
+
+msgid "Consultar a Volt"
+msgstr "Consultar a Volt"
+
+msgid "Última consulta"
+msgstr "Última consulta"
+
+msgid "Nueva conversación"
+msgstr "Nueva conversación"
+
+msgid ""
+"Ocultamos productos sin existencias o que superan tu límite. La respuesta de"
+" Volt puede mencionarlos."
+msgstr ""
+"Ocultamos productos sin existencias o que superan tu límite. La respuesta de"
+" Volt puede mencionarlos."
+
+msgid "Existencias"
+msgstr "Existencias"
+
+msgid "Tallas"
+msgstr "Tallas"
+
+msgid "Ver catálogo en Volt"
+msgstr "Ver catálogo en Volt"
+
+msgid "No hay productos disponibles que coincidan con esta búsqueda y límite."
+msgstr ""
+"No hay productos disponibles que coincidan con esta búsqueda y límite."
