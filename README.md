@@ -436,3 +436,7 @@ Para este entregable se consideran implementadas **4 de las 7 clases principales
 * `SavingsContribution`
 
 El objetivo del Entregable 1 es consolidar el núcleo de FinanSmart manteniendo entre el 50 % y el 60 % de las clases principales del dominio implementadas y respetando la arquitectura definida para el proyecto.
+
+## Entrega 2 (bloque de Samuel)
+
+Ver [instrucciones, pruebas y diagrama](docs/ENTREGA2_SSERNA12.md). Incluye planes premium con pagos de simulación, conexión Flask, reportes con Celery y Redis y Compose para EC2. La integración real con el equipo aliado y el despliegue efectivo requieren configuración adicional.

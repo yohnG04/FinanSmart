@@ -16,3 +16,7 @@ python-dotenv==1.2.3
 six==1.17.0
 sqlparse==0.5.5
 psycopg[binary]>=3.2,<4
+celery>=5.5,<6
+redis>=5.2,<7
+gunicorn>=23,<24
+whitenoise>=6.9,<7

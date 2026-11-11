@@ -9,10 +9,14 @@ from expenses.infra.recommendation_engines import (
 )
 
 
+from expenses.infra.remote_recommendations import RemoteRecommendationEngine
+
+
 class RecommendationEngineFactory:
     _engines = {
         "MOCK": MockRecommendationEngine,
         "REAL": BudgetRecommendationEngine,
+        "REMOTE": RemoteRecommendationEngine,
     }
 
     def create(self) -> RecommendationEngine:

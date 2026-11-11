@@ -1,0 +1,183 @@
+# English translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-11 03:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Planes premium"
+msgstr "Premium plans"
+
+msgid "Reportes financieros"
+msgstr "Financial reports"
+
+msgid "Planes y reportes"
+msgstr "Plans and reports"
+
+msgid "Nombre del plan"
+msgstr "Plan name"
+
+msgid "Descripción"
+msgstr "Description"
+
+msgid "Precio (COP)"
+msgstr "Price (COP)"
+
+msgid "Duración en días"
+msgstr "Duration in days"
+
+msgid "Disponible"
+msgstr "Available"
+
+msgid "plan premium"
+msgstr "premium plan"
+
+msgid "planes premium"
+msgstr "premium plans"
+
+msgid "Pendiente"
+msgstr "Pending"
+
+msgid "Aprobado"
+msgstr "Approved"
+
+msgid "Rechazado"
+msgstr "Rejected"
+
+msgid "Importe (COP)"
+msgstr "Amount (COP)"
+
+msgid "Estado"
+msgstr "Status"
+
+msgid "Simulación"
+msgstr "Simulation"
+
+msgid "pago"
+msgstr "payment"
+
+msgid "pagos"
+msgstr "payments"
+
+msgid "En cola"
+msgstr "Queued"
+
+msgid "Procesando"
+msgstr "Processing"
+
+msgid "Listo"
+msgstr "Ready"
+
+msgid "No disponible"
+msgstr "Unavailable"
+
+msgid "Año"
+msgstr "Year"
+
+msgid "Mes"
+msgstr "Month"
+
+msgid "reporte"
+msgstr "report"
+
+msgid "reportes"
+msgstr "reports"
+
+msgid "El plan solicitado no está disponible."
+msgstr "The selected plan is unavailable."
+
+msgid "La duración del plan debe ser positiva."
+msgstr "Plan duration must be positive."
+
+msgid "Selecciona un período válido."
+msgstr "Select a valid period."
+
+msgid "No se pueden generar reportes futuros."
+msgstr "Reports cannot be created for future periods."
+
+msgid "Selecciona una simulación válida."
+msgstr "Select a valid simulation."
+
+msgid "Pago de prueba aprobado. Plan activado."
+msgstr "Test payment approved. Plan activated."
+
+msgid "Pago de prueba rechazado. No se activó el plan."
+msgstr "Test payment rejected. The plan was not activated."
+
+msgid "Solicitud de reporte registrada. Revisa el estado de la tarea."
+msgstr "Report request registered. Check the task status."
+
+msgid "Demostración académica: ningún botón realiza cobros reales."
+msgstr "Academic demonstration: no button charges real money."
+
+msgid "Tu plan está activo"
+msgstr "Your plan is active"
+
+msgid "Válido hasta"
+msgstr "Valid until"
+
+#, python-format
+msgid "Vigencia: %(days)s días"
+msgstr "Validity: %(days)s days"
+
+msgid "Simular pago aprobado"
+msgstr "Simulate approved payment"
+
+msgid "Simular pago rechazado"
+msgstr "Simulate rejected payment"
+
+msgid "No hay planes disponibles."
+msgstr "No plans available."
+
+msgid "Historial de pagos de prueba"
+msgstr "Test payment history"
+
+msgid "Todavía no hay pagos."
+msgstr "There are no payments yet."
+
+msgid "Los reportes se calculan en segundo plano mediante Celery y Redis."
+msgstr "Reports are computed in the background using Celery and Redis."
+
+msgid "Solicitar reporte mensual"
+msgstr "Request monthly report"
+
+msgid "Generar en segundo plano"
+msgstr "Generate in the background"
+
+msgid "Historial de reportes"
+msgstr "Report history"
+
+msgid "Ingresos"
+msgstr "Income"
+
+msgid "Gastos"
+msgstr "Expenses"
+
+msgid "Balance"
+msgstr "Balance"
+
+msgid "Revisa el broker o worker."
+msgstr "Check the message broker or worker."
+
+msgid "Actualiza la página para consultar el estado."
+msgstr "Refresh the page to check the status."
+
+msgid "Aún no hay reportes solicitados."
+msgstr "No reports have been requested yet."
+
+msgid "Servicio de recomendaciones temporalmente no disponible. "
+msgstr "Recommendation service temporarily unavailable. "
