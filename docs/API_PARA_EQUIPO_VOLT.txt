@@ -8,9 +8,10 @@ Pueden mostrarlo en Volt como un panel de "Resumen financiero de FinanSmart".
 No necesitan clonar nuestro proyecto: su servidor llama a nuestra API.
 
 ESTADO
-El endpoint está implementado y probado. Falta la URL pública del despliegue
-y entregar el token de una cuenta creada EN ESE MISMO SERVIDOR.
-Este archivo no contiene una URL o un token utilizables todavía.
+El endpoint está desplegado y probado en AWS. URL pública:
+https://54.210.252.126/api/v1/summary/
+El token de la cuenta volt_demo se entrega en un archivo privado separado.
+La cuenta no tiene contraseña web ni permisos administrativos.
 
 PETICIÓN
 Método: GET
@@ -21,8 +22,8 @@ Headers:
   Accept: application/json
   Authorization: Token TOKEN_ENTREGADO_POR_PRIVADO
 
-Ejemplo de URL final (marcador, reemplazar):
-https://DOMINIO-PUBLICO-DE-FINANSMART/api/v1/summary/
+URL final:
+https://54.210.252.126/api/v1/summary/
 
 Importante: aquí se usa "Token", no "Bearer".
 La autenticación es diferente al chatbot público de Volt, que no exige token.

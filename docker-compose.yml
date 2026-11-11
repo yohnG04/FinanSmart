@@ -44,6 +44,8 @@ services:
       CELERY_BROKER_URL: redis://redis:6379/0
       CELERY_RESULT_BACKEND: redis://redis:6379/1
       VOLT_BASE_URL: ${VOLT_BASE_URL:-}
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-False}
+      CSRF_COOKIE_SECURE: ${CSRF_COOKIE_SECURE:-False}
 
     command: >-
       sh -c "python manage.py migrate --noinput &&
@@ -90,9 +92,19 @@ services:
       - '${HTTP_PORT:-8080}:80'
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - acme_data:/var/www/certbot:ro
     depends_on:
       - django_web
       - recommendation_service
 
+  certbot:
+    image: certbot/certbot:v5.4.0
+    profiles: [certificates]
+    volumes:
+      - acme_data:/var/www/certbot
+      - certbot_data:/etc/letsencrypt
+
 volumes:
   postgres_data:
+  acme_data:
+  certbot_data:

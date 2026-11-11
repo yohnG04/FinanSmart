@@ -2,7 +2,7 @@
 
 ## Avance de la entrega 2
 
-Estado del conjunto y pendientes de despliegue: [Entrega 2 integrada](docs/ESTADO_INTEGRADO.md). Para el equipo de ropa Volt: [contrato de nuestra API](docs/API_PARA_EQUIPO_VOLT.txt).
+Aplicación desplegada: https://54.210.252.126. Estado y comprobaciones: [Entrega 2 integrada](docs/ESTADO_INTEGRADO.md). Operación del certificado: [HTTPS en AWS](docs/HTTPS_AWS.md). Para el equipo de ropa Volt: [contrato de nuestra API](docs/API_PARA_EQUIPO_VOLT.txt).
 
 El bloque de frontend, presupuestos, deudas, idiomas e integraciones está descrito en [la guía de entrega y coordinación](docs/ENTREGA2_YOHN.md). La página principal ahora es el panel financiero y los gastos están en `/gastos/`. Ejecutar las migraciones antes de iniciar la aplicación.
 
