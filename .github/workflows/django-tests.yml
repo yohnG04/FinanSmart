@@ -24,6 +24,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Instalar dependencias Flask
+        run: pip install -r recommendation_service/requirements.txt
+
       - name: Verificar configuracion
         run: python manage.py check
 
@@ -35,3 +38,6 @@ jobs:
 
       - name: Ejecutar pruebas Django
         run: python manage.py test
+
+      - name: Probar microservicio Flask
+        run: python -m unittest discover -s recommendation_service/tests -p "test_*.py" -v
