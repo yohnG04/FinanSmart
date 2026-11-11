@@ -1,6 +1,6 @@
 # Entrega 2 integrada — 10 de noviembre de 2026
 
-Se integraron los commits de `main` hasta `50e1e8d`, conservando sus autores, con la integración Volt de Yohn (`12bd716`). La configuración unificada usa `VOLT_BASE_URL`, también en Docker Compose; reemplaza las antiguas variables `ALLY_API_URL` y `ALLY_API_TOKEN`.
+Se integraron los commits de `main` hasta `c4f581d`, conservando sus autores, con la integración Volt de Yohn (`12bd716`). La configuración unificada usa `VOLT_BASE_URL`, también en Docker Compose; reemplaza las antiguas variables `ALLY_API_URL` y `ALLY_API_TOKEN`.
 
 ## Incluido en el código
 
@@ -22,3 +22,8 @@ Las guías anteriores describen bloques individuales y asignaciones históricas.
 - Capturar evidencias, revisar correcciones del profesor y mantener EC2 encendida para sustentar.
 
 Las pruebas locales usan SQLite y respuestas controladas para los servicios externos; no certifican un despliegue AWS ni una ejecución real del broker. Docker no estaba disponible en el entorno de esta integración, por lo que no se ejecutó Compose aquí.
+
+## Validación local
+
+47 pruebas Django y 8 pruebas Flask aprobadas. Comprobaciones de configuración, migraciones y recolección de archivos estáticos completadas.
+
